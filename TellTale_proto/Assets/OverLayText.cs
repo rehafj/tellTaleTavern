@@ -21,7 +21,7 @@ public Text overLayGold;
 	// Update is called once per frame
 	void Update () {
 		overLayGold.text = playerthigs.gold.ToString() + " gold";
-		BarStatas.text =currentFame.getStateInString();
+		BarStatas.text = "bar status" + currentFame.getStateInString();
 
 
 	
