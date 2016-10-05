@@ -61,7 +61,7 @@ public class MoveToNext : MonoBehaviour {
 			MoveToNextScreen();
 			Debug.Log("moving time is gretaer than 3");
 //			//temporaty fix - have to fix timing on other script 
-		;//htis change should be as we update time - but issue with values - check later
+		//htis change should be as we update time - but issue with values - check later
 		}
 	
 	}
