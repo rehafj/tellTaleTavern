@@ -14,6 +14,8 @@ public class FameSystem : MonoBehaviour {
 	//singlton pattern incase we wanted to move it across scenes / might do the same with the player manager 
 	public void Awake(){
 		tavernSatte = TavernState.trash;
+		Debug.Log("string value is "+ 	tavernSatte.ToString());
+
 		if(!_instance){
 			_instance = this;
 			DontDestroyOnLoad(gameObject);
@@ -63,4 +65,11 @@ public class FameSystem : MonoBehaviour {
 			}
 
 }
+
+	public string getStateInString(){
+
+			string temp = 	tavernSatte.ToString();
+			return temp;
+
+	}
 }
