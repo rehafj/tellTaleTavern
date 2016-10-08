@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 using UnityEngine.UI;
 /// <summary>
 //TODO:  Have to refactor code - bits and parts are repeated in this class 
@@ -13,7 +14,7 @@ public class Item : MonoBehaviour {
 //memeber varibles for ach item 
 	public string  titile;			public string discription ;
 	public int stock;				public int price;
-	public bool isAvailable;
+	public bool isAvailable;		public int toBuy;
 //type and quality set up
 	public enum quality { high, mid, low}		public quality ThisQuality;
 
@@ -176,6 +177,20 @@ public class Item : MonoBehaviour {
 				break;
 		}
 			
+	}
+
+	public void getInput(string input){
+		int tempX ;
+		bool canConvert = int.TryParse(input, out  tempX);
+		if(canConvert){
+		this.toBuy = tempX;
+		}
+		else 
+	{
+		Debug.LogError("not a number!!");
+	}
+		Debug.Log("you entred"+ input);
+	//	this.toBuy =int.TryParse(input);
 	}
 
 	//TODO: 
