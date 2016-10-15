@@ -112,7 +112,10 @@ public class TimeSystem : MonoBehaviour {
 				//add a refrence to a temp screen befor end of day analysis 
 				//fl.DisableFlowChart( this.day); 				//did this though fungus now 
 				this.day +=1;
-				//method to stop fungus charts
+
+				// add another refrence for an empty scene gere to display wait time - not sure if we can delay it with fungus 
+				// or send a messge from fungus but have to debug on evry case ,,, 
+
 				MoveToNext.dayChanged = true;
 				Debug.Log("day changed hazah");
 
