@@ -75,6 +75,7 @@ public class TimeSystem : MonoBehaviour {
 					Debug.Log("Adding an hour");
 					this.Hour +=   1;
 
+
 					}
 				 if(this.Hour>3){
 						Debug.Log("hour greater than 3");
@@ -107,7 +108,9 @@ public class TimeSystem : MonoBehaviour {
 			if(this.day <=4)
 					
 			{
-				fl.DisableFlowChart( this.day);
+				Fungus.Flowchart.BroadcastFungusMessage ("Time");
+				//add a refrence to a temp screen befor end of day analysis 
+				//fl.DisableFlowChart( this.day); 				//did this though fungus now 
 				this.day +=1;
 				//method to stop fungus charts
 				MoveToNext.dayChanged = true;
