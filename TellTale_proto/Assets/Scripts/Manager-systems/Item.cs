@@ -2,7 +2,9 @@
 using System.Collections;
 using System;
 using UnityEngine.UI;
+using Fungus;
 /// <summary>
+
 //TODO:  Have to refactor code - bits and parts are repeated in this class 
 /// class is too bulky might seprate tasks later on if time permits (step 1: get it to work :P) 
 /// </summary>
@@ -35,6 +37,8 @@ public class Item : MonoBehaviour {
 	GUIStyle style = new GUIStyle();
 
 //initilize setups 
+	
+	
 	void Awake(){
 			dayTime = FindObjectOfType<TimeSystem>();
 			playerAsset = FindObjectOfType<PlayerAssets>();
