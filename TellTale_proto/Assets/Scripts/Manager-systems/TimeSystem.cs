@@ -178,4 +178,9 @@ public class TimeSystem : MonoBehaviour {
 
 	}
 
+	public int getDayInInt(){
+
+		return this.day;
+	}
+
 }
