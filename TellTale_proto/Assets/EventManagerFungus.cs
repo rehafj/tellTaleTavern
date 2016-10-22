@@ -86,10 +86,15 @@ public class EventManagerFungus : MonoBehaviour {
 			if(inventory.myitems[i].titile == itemToBuy && cnt<=1){
 
 				inventory.myitems.Remove(inventory.myitems[i]);
+				//add contion to check on flow chart 
 				inventory.soldItems.Add(inventory.myitems[i]);
+				Fungus.Flowchart.BroadcastFungusMessage("yes");
 
 				cnt++; 
 				break;//to insure it only sells one item 
+			}
+			else {
+				Fungus.Flowchart.BroadcastFungusMessage("no");
 			}	
 		}
 	}
