@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class MoveToNext : MonoBehaviour {
 
 
-	public TimeSystem _time;
+	public TimeSystem currentTime;
 	public bool isItTimed = false;
 	public float ScreenTime = 3f;
 	public GameObject nextScreen;
@@ -14,7 +14,7 @@ public class MoveToNext : MonoBehaviour {
 	public static  bool dayChanged = false;
 	//[SerializeField]
 	//public static bool n  = false;
-	float startTime = Time.time;
+	float startTime ;
 
 	//this is temporary - quik fix - need to do better code than this - for SHAME SELF SHAMEEE
 	//public GameObject NextScreen;
@@ -27,18 +27,19 @@ public class MoveToNext : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
+		startTime = Time.time;
 
 		setUpTime();
-		_time = GameObject.FindObjectOfType<TimeSystem>();
+		currentTime = GameObject.FindObjectOfType<TimeSystem>();
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		if(Input.GetKey(KeyCode.Q)){
-		MoveToNextScreen();
-		}
+//		if(Input.GetKey(KeyCode.Q)){
+//		MoveToNextScreen();
+//		}
 
 		if(isItTimed){
 			while(Time.time < startTime + ScreenTime){
@@ -57,22 +58,19 @@ public class MoveToNext : MonoBehaviour {
 		}//end of timed event 
 	//	if(_time.Hour>=12 && !hasmoved){
 		else {//if it is  not timed - check for the current hour of the day
+
 		if(dayChanged){
 			MoveToNextScreen();
-			Debug.Log("moving time is gretaer than 3");
+			Debug.Log("moving time is gretaer  - moving to next day");
 //			//temporaty fix - have to fix timing on other script 
 		//htis change should be as we update time - but issue with values - check later
 		}
 	
 	}
 	}
+
 	void setUpTime(){
 		startTime = Time.time;
-	}
-	public static void changedBoolValue(){
-
-		
-
 	}
 
 	public void MoveToNextScreen(){
@@ -100,6 +98,26 @@ public class MoveToNext : MonoBehaviour {
 			}
 
 	}
+
+	public void TestActiveateNext(GameObject obj1, GameObject obj2){
+
+		obj1.SetActive(true);
+		obj2.SetActive(false);
+
+	}
+
+	//for muce clicks 
+
+	public void activateNext(GameObject ob){
+	ob.SetActive(true);
+
+	}
+	public void deActivate(GameObject ob){
+		ob.SetActive(false);
+
+	}
+
+
 
 
 
