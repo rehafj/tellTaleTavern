@@ -91,11 +91,17 @@ public class EventManagerFungus : MonoBehaviour {
 				Fungus.Flowchart.BroadcastFungusMessage("yes");
 
 				cnt++; 
-				break;//to insure it only sells one item 
+				break;
+				//to insure it only sells one item 
 			}
 			else {
+				Debug.Log("Sending MESSSSSGEEE");
 				Fungus.Flowchart.BroadcastFungusMessage("no");
-			}	
+			}
+
+			Debug.Log("Sending MESSSSSGEEE");
+				Fungus.Flowchart.BroadcastFungusMessage("no");
+				
 		}
 	}
 
