@@ -79,10 +79,13 @@ public class EventManagerFungus : MonoBehaviour {
 
 	//this is used to add a narrative thing near the end 
 	public void BuyFromFungus(string itemToBuy){
-
+			Debug.Log("entred first buy form method");
 		int cnt = 0;
-		for( int i = 0 ; i <= inventory.myitems.Count-1 ;i++){
 
+		if( inventory.myitems.Count>0){
+			Debug.Log("items are > 0 " );
+		for( int i = 0 ; i <= inventory.myitems.Count-1 ;i++){
+				Debug.Log("checking list  ");
 			if(inventory.myitems[i].titile == itemToBuy && cnt<=1){
 
 				inventory.myitems.Remove(inventory.myitems[i]);
@@ -95,6 +98,7 @@ public class EventManagerFungus : MonoBehaviour {
 				//to insure it only sells one item 
 			}
 			else {
+					Debug.Log("in else   ");
 				Debug.Log("Sending MESSSSSGEEE");
 				Fungus.Flowchart.BroadcastFungusMessage("no");
 			}
@@ -103,6 +107,16 @@ public class EventManagerFungus : MonoBehaviour {
 				Fungus.Flowchart.BroadcastFungusMessage("no");
 				
 		}
+	}//end of if 
+	else {
+
+			Debug.Log("Sending MESSSSSGEEE");
+				Fungus.Flowchart.BroadcastFungusMessage("no");
 	}
+
+
+	}
+
+
 
 }
