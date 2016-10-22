@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using Fungus;
 public class FameSystem : MonoBehaviour {
 
 //for now fame system gets modified based on whatyou buy \
@@ -72,4 +72,10 @@ public class FameSystem : MonoBehaviour {
 			return temp;
 
 	}
+
+	//public Fungus.StringData ReturnString(){
+
+//		 Fungus.StringData  data = "high";
+//		 return tavernSatte.ToString();
+//}
 }
