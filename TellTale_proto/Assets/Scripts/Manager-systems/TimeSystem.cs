@@ -108,7 +108,8 @@ public class TimeSystem : MonoBehaviour {
 			if(this.day <=4)
 					
 			{
-				Fungus.Flowchart.BroadcastFungusMessage ("Time");
+				Fungus.Flowchart.BroadcastFungusMessage ("Time"+this.day.ToString());
+
 				//add a refrence to a temp screen befor end of day analysis 
 				//fl.DisableFlowChart( this.day); 				//did this though fungus now 
 				this.day +=1;
