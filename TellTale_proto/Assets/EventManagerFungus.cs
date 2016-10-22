@@ -8,11 +8,13 @@ public class EventManagerFungus : MonoBehaviour {
 	[SerializeField]
 	FameSystem currentFame;
 	TimeSystem currentTime;
+	PlayerAssets inventory;
 	// Use this for initialization
 	void Awake () {
 
 		currentFame = FindObjectOfType<FameSystem>();
 		currentTime = FindObjectOfType<TimeSystem>();
+		inventory = FindObjectOfType<PlayerAssets>();
 	}
 /*	public void Update(){
 		 int today = TimeSystem.getDay();// NEVER CHANGES NOTICE IT 
@@ -73,6 +75,23 @@ public class EventManagerFungus : MonoBehaviour {
 
 
 
+	}
+
+	//this is used to add a narrative thing near the end 
+	public void BuyFromFungus(string itemToBuy){
+
+		int cnt = 0;
+		for( int i = 0 ; i <= inventory.myitems.Count-1 ;i++){
+
+			if(inventory.myitems[i].titile == itemToBuy && cnt<=1){
+
+				inventory.myitems.Remove(inventory.myitems[i]);
+				inventory.soldItems.Add(inventory.myitems[i]);
+
+				cnt++; 
+				break;//to insure it only sells one item 
+			}	
+		}
 	}
 
 }
