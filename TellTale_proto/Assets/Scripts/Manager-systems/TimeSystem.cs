@@ -159,19 +159,19 @@ public class TimeSystem : MonoBehaviour {
 
 		switch(day){
 			case 0:
-				Debug.Log("Monday");
-				return "Monday";
+				//Debug.Log("Monday");
+				return "day 1 ";
 			case 1: 
-				Debug.Log("tuesday");
-				return "tuesday";
+				//Debug.Log("tuesday");
+				return "beanfarmingday";
 			case 2: 
-				Debug.Log("Wednesday");
+				//Debug.Log("Wednesday");
 				return "Wednesday";
 			case 3: 
-				Debug.Log("tues");
+				//Debug.Log("tues");
 				return "thursday";
 			 default:
-				Debug.Log("otehr days");
+				//Debug.Log("otehr days");
 				return "weekdays";
 
 
