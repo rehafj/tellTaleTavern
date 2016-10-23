@@ -30,6 +30,8 @@ public class EventManagerFungus : MonoBehaviour {
 		Debug.Log("day is " + today.ToString());
 		SetTargetFlowChart(today, statas);
 	}
+
+	//test this with a sindle messge since the game object s is deactivated 
 	//send in a messge depending on the bar's status and day to activate certain flow charts!
 	// example lady quin will nnot show up if bar's stat is high but sasha will only show up if bars status is low 
 	public void SetTargetFlowChart(int day, string barStat){
