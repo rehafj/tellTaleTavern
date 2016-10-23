@@ -4,7 +4,7 @@ using System.Collections;
 public class TimeSystem : MonoBehaviour {
 
 	public static TimeSystem _instance;
-	public DisableFlowCharts fl;
+//	public DisableFlowCharts fl;
 	public int Hour=0;
 	public  int day=0;														
 	public  float min=0;
@@ -20,7 +20,7 @@ public class TimeSystem : MonoBehaviour {
 	/// </summary>
 	void Awake()
         {
-        fl = FindObjectOfType<DisableFlowCharts>();
+        //fl = FindObjectOfType<DisableFlowCharts>();
 
 		if (_instance == null)
 
