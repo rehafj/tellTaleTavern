@@ -13,6 +13,7 @@ public class Item : MonoBehaviour {
 //text feilds fot the market 
 	public Text Button_text;  public Text txt_stock;
 	public Text txt_price;	  public Text txt_textField;
+	public Text txt_quantity;
 //memeber varibles for ach item 
 	public string  titile;			public string discription ;
 	public int stock;				public int price;
@@ -25,12 +26,17 @@ public class Item : MonoBehaviour {
 	public TimeSystem dayTime;	
 	public int dayUnAvaible;
 
+	public int quantToBuy;
 	public int tempGold;
 	[SerializeField]
 	PlayerAssets playerAsset; 
 	FameSystem tavernStat;
+	TempStock tmp;
 
 	bool mouceEnters = false;
+
+	int tempStock;
+
 
 
 	//for styling gui later on ( THE BOX FLOAT THING)
@@ -43,9 +49,11 @@ public class Item : MonoBehaviour {
 			dayTime = FindObjectOfType<TimeSystem>();
 			playerAsset = FindObjectOfType<PlayerAssets>();
 			tavernStat = FindObjectOfType<FameSystem>();
+			tmp = FindObjectOfType<TempStock>();
 			setItemData(ThisQuality);
 			checkAvaiblity(dayUnAvaible);
 			setupTextFeilds();
+			tempStock = this.stock;
 
 	}
 
@@ -73,6 +81,11 @@ public class Item : MonoBehaviour {
 				checkAvaiblity(dayUnAvaible);
 				buyItem();
 
+		}
+		//have to find a better way 
+		if(tmp.hasBenReset){
+		Debug.Log("true!");
+			clear();
 		}
 	}
 
@@ -114,8 +127,86 @@ public class Item : MonoBehaviour {
 					Debug.Log("item is avaible");
 				}
 		}
+		//need to clear quantity 
+	//on click add this to temp stock 
+	public void AddToTemp(){
+		if(this.isAvailable && tempStock>=0){
+		tmp.tempList.Add(this);
+		}
+	}
+
+	public void increaseQuantity(){
+		if(this.isAvailable && tempStock>=0){
+		quantToBuy = quantToBuy+1;
+		tempStock--;
+		txt_quantity.text = quantToBuy.ToString();
+		txt_stock.text = tempStock.ToString();}
 
 
+	}
+	public void clear(){
+		txt_quantity.text = "0";
+		quantToBuy = 0;
+	}
+
+	//called evryday
+	//ask team on toher methods of doing this - brain hurts!
+	void OnEnable(){
+	if( MoveToNext.dayChanged)
+		reStock();//add something to check day changed
+	}
+	public void reStock(){
+		 this.setItemData(ThisQuality);
+	}
+
+
+
+		//run this through all items stroed in a list 
+	public void buyItemNew(){
+		checkAvaiblity(dayUnAvaible);
+
+		if(isAvailable && stock>0){
+
+			if(playerAsset.gold >= this.price){
+				//add a method to check item quality - if high //increase by high amount on other method 
+				updateFame();
+				playerAsset.gold -= this.price;
+				this.stock-=1 ;
+				playerAsset.addItem(this);
+				//Debug.Log(" you got the item"+ this.titile);
+
+				if(txt_textField !=null){
+					txt_stock.text = stock.ToString();
+				}//increase BAR FAME or on player assets page 
+
+			}
+		}else if (isAvailable == false || stock <= 0){
+			//GUI.Label(new Rect(10, 10, 100, 20), "Out of stock!");
+				if(txt_textField !=null){
+				if( isAvailable == false ){
+					txt_textField.text ="sorry one of the items was not avaible ";
+				}
+
+				else if(playerAsset.gold<=this.price){
+
+					//	txt_textField.text ="looks you are running short ";
+
+				}}//	Debug.Log("sorry out of that item");
+
+		} else {
+			if(txt_textField !=null){
+						
+						txt_textField.text =" looks liek you are short on Gold there";
+						}}}
+
+
+
+
+	/// <summary>
+	/// ///////////////////////////////////////////
+	/// </summary>
+
+		//run this through all items stroed in a list 
 	public void buyItem(){
 		Debug.Log("entred buy item");
 		checkAvaiblity(dayUnAvaible);

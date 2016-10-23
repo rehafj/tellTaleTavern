@@ -16,9 +16,11 @@ public class PlayerAssets : MonoBehaviour {
 	int ExtraProfit;
 	public  List<Item> myitems = new List<Item>(); 
 	public List<Item> soldItems = new List<Item>();
+	public List<Item> expiredItems = new List<Item>();
+			List<Item> tempBeer = new List<Item>();
 
-	public List<string> itemsSoldDay = new List<string>();//used to temporary store the title 
-	public List<int> pricesOfItems = new List<int>(); //used to temp store the price 
+	//public List<string> itemsSoldDay = new List<string>();//used to temporary store the title 
+	//public List<int> pricesOfItems = new List<int>(); //used to temp store the price 
 //	public List<string> brewItems = new List<string>() ;//used to store the names for refrences
 	//updates used for testing... 
 
@@ -29,10 +31,11 @@ public class PlayerAssets : MonoBehaviour {
 	string mystring = "item: ";
 	string soldFor ="price: ";
 
-
+	TempStock tmp; 
 	void Awake(){
 		startGold = gold; //to calculate profits from the bening 
 		TavernFameState = FindObjectOfType<FameSystem>();
+
 	}
 	void Update(){
 		if(Input.GetKeyDown(KeyCode.N)){
@@ -75,9 +78,10 @@ public class PlayerAssets : MonoBehaviour {
 //call this when we restart 
 	public void clearItems(){
 
-		itemsSoldDay.Clear();
+		//itemsSoldDay.Clear();
 		soldItems.Clear();
-		myitems.Clear();
+		expiredItems.Clear();
+		//myitems.Clear();
 
 	}
 
@@ -107,7 +111,8 @@ public class PlayerAssets : MonoBehaviour {
 	}*/
 
 	public void DisplayinTextBar(){ //with all item values 
-
+		//add a bool for a can click statment 
+		endofDaySale.text ="";
 		foreach (Item s in soldItems) {
 
 		//dupilcate code just for testing for now 
@@ -128,11 +133,12 @@ public class PlayerAssets : MonoBehaviour {
 				soldFor = soldFor.ToString() + s.tempGold.ToString();
 		} 
 
-		endofDaySale.text = mystring +"\n" + soldFor + "gold" ;
+		endofDaySale.text = mystring +"\t" + soldFor + "gold\n"  ;
 
 			
 
 	}
+
 
 	public  void Sell(){
 
@@ -140,6 +146,8 @@ public class PlayerAssets : MonoBehaviour {
 		TheActualSelling();	//will go through the actuall list of items to be sold 
 		DisplayinTextBar(); // and finnaly display it in text area 
 	}
+
+
 
 	//this is the basic sell system that was mentioned based on selling per day 
 	//this is just to add it to a list of items being sold   - will not calcualte the profits here 
@@ -157,6 +165,7 @@ public class PlayerAssets : MonoBehaviour {
 
 						if(myitems[i].ThisQuality == Item.quality.high && bevCounter  < 2) //numbers are for max high of drinks to be sold
 								{
+
 									soldItems.Add(myitems[i]);
 
 						}else if (myitems[i].ThisQuality == Item.quality.mid && bevCounter < 1){
@@ -181,15 +190,21 @@ public class PlayerAssets : MonoBehaviour {
 					if(myitems[i].ThisQuality == Item.quality.high && meatCounter  < 2)
 							{
 								soldItems.Add(myitems[i]);
+								//for expired items 
+								expiredItems.Add(myitems[i]);
+								myitems.Remove(myitems[i]);
 
 					}else if (myitems[i].ThisQuality == Item.quality.mid && meatCounter < 1){
-
 								soldItems.Add(myitems[i]);
+								expiredItems.Add(myitems[i]);
+								myitems.Remove(myitems[i]);
+
 						}
 					else if (myitems[i].ThisQuality == Item.quality.low && meatCounter < 5) {
 
-								soldItems.Add(myitems[i]);	
-
+								soldItems.Add(myitems[i]);
+								expiredItems.Add(myitems[i]);
+								myitems.Remove(myitems[i]);
 						}
 
 				}
@@ -203,14 +218,20 @@ public class PlayerAssets : MonoBehaviour {
 					if(myitems[i].ThisQuality == Item.quality.high && breadCounter  < 2)
 							{
 								soldItems.Add(myitems[i]);
+								expiredItems.Add(myitems[i]);
+								myitems.Remove(myitems[i]);
 
 					}else if (myitems[i].ThisQuality == Item.quality.mid && breadCounter < 1){
 
 								soldItems.Add(myitems[i]);
+								expiredItems.Add(myitems[i]);
+								myitems.Remove(myitems[i]);
 						}
 					else if (myitems[i].ThisQuality == Item.quality.low && breadCounter < 5) {
 
-								soldItems.Add(myitems[i]);	
+								soldItems.Add(myitems[i]);
+								expiredItems.Add(myitems[i]);
+								myitems.Remove(myitems[i]);
 
 						}
 						}// end of else if 	
@@ -224,8 +245,33 @@ public class PlayerAssets : MonoBehaviour {
 	//until we determaine what to do further
 	//after sorting and moving all emenets into a new list clear odl list for new additions on the next day 
  
-	myitems.Clear();
-	//add another method to caluclate profits based on "solditems" list and display name - price 
+//	myitems.Clear();
+		keepBeer();
+		myitems.Clear();
+		reAddBeer();
+	}
+	public void keepBeer(){
+	//make a temp holder for beer items and then shift them inside after clearing the list
+	//add somehing to check 
+
+		for (int i = 0; i< myitems.Count; i++){
+				Debug.Log("inside beer keeper");		
+			if(myitems[i].itemType == Item.ItemType.bread  || myitems[i].itemType == Item.ItemType.meat){
+				Debug.Log("the item was meet or bread!");		
+
+				expiredItems.Add(myitems[i]);
+			}
+			else {
+				tempBeer.Add(myitems[i]);
+			} 
+		}
+	}
+
+	//re add beer since it is the only thing that does not expireee
+	public void reAddBeer(){
+		foreach(Item i in tempBeer){
+			myitems.Add(i);
+		}
 	}
 	/// <summary>
 	/// Thes the actual selling.
