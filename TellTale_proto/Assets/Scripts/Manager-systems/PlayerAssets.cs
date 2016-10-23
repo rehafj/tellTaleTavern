@@ -3,7 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 public class PlayerAssets : MonoBehaviour {
-	
+
+/// <summary>
+/// add METHOD TO INCRASE PROFIT UNDER PLAYER GOLD TINGS 
+/// </summary>
 	public int gold = 300;
 	public int startGold; 
 	FameSystem TavernFameState;
@@ -15,7 +18,7 @@ public class PlayerAssets : MonoBehaviour {
 
 	int ExtraProfit;
 	public  List<Item> myitems = new List<Item>(); 
-	public List<Item> soldItems = new List<Item>();
+	public List<Item> soldItems = new List<Item>(); //have to clear it 
 	public List<Item> expiredItems = new List<Item>();
 			List<Item> tempBeer = new List<Item>();
 
@@ -191,6 +194,7 @@ public class PlayerAssets : MonoBehaviour {
 							{
 								soldItems.Add(myitems[i]);
 								//for expired items 
+								//delete expired > should be removed 
 								expiredItems.Add(myitems[i]);
 								myitems.Remove(myitems[i]);
 
@@ -258,7 +262,7 @@ public class PlayerAssets : MonoBehaviour {
 				Debug.Log("inside beer keeper");		
 			if(myitems[i].itemType == Item.ItemType.bread  || myitems[i].itemType == Item.ItemType.meat){
 				Debug.Log("the item was meet or bread!");		
-
+				//rmove this later 
 				expiredItems.Add(myitems[i]);
 			}
 			else {
