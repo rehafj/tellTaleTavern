@@ -273,7 +273,7 @@ public class Item : MonoBehaviour {
 		}
 			
 	}
-
+	//unused 
 	public void getInput(string input){
 		int tempX ;
 		bool canConvert = int.TryParse(input, out  tempX);
