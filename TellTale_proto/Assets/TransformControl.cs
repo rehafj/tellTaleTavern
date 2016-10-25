@@ -6,6 +6,7 @@ public class TransformControl : MonoBehaviour {
 
 	MusicManager music;
 	CurrentScenes c;
+	public bool disableAfter = false;
 	public void Awake(){
 
 		music = FindObjectOfType<MusicManager>();
@@ -19,8 +20,10 @@ public class TransformControl : MonoBehaviour {
 	}
 
 	public void OnDisable(){
-
-		music.stopMusic();
-		
+		if(disableAfter)
+		{
+			Debug.Log("music stopped");
+			music.stopMusic();
+		}
 	}
 }
