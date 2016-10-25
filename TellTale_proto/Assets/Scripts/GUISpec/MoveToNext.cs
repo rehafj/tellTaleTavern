@@ -10,6 +10,7 @@ public class MoveToNext : MonoBehaviour {
 	public bool isItTimed = false;
 	public float ScreenTime = 3f;
 	public GameObject nextScreen;
+	MusicManager music;
 	//[SerializeField]
 	public static  bool dayChanged = false;
 	//[SerializeField]
@@ -28,7 +29,7 @@ public class MoveToNext : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		startTime = Time.time;
-
+		music = FindObjectOfType<MusicManager>();
 		setUpTime();
 		currentTime = GameObject.FindObjectOfType<TimeSystem>();
 
@@ -60,8 +61,11 @@ public class MoveToNext : MonoBehaviour {
 		else {//if it is  not timed - check for the current hour of the day
 
 		if(dayChanged){
+			Debug.Log("changed");
+	//		music.MusicChange();
 			MoveToNextScreen();
 			Debug.Log("moving time is gretaer  - moving to next day");
+
 //			//temporaty fix - have to fix timing on other script 
 		//htis change should be as we update time - but issue with values - check later
 		}
