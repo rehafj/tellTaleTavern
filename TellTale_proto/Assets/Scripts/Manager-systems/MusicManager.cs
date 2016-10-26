@@ -47,7 +47,8 @@ public class MusicManager : MonoBehaviour {
 			notChanged = false;
 
 		}
-		else if( sceneState.CurrentS == CurrentScenes.SceneStaet.tavern){
+		
+		if(sceneState.CurrentS == CurrentScenes.SceneStaet.tavern){
 			Debug.Log("Home music  music should be plaing");
 
 			if(FameSystem.TavernState.high == fame.tavernSatte){
@@ -58,7 +59,9 @@ public class MusicManager : MonoBehaviour {
 			notChanged = false;
 				
 				//play music for high or fancy 
-			} else if( FameSystem.TavernState.trash == fame.tavernSatte){
+			} 
+			
+			if( FameSystem.TavernState.trash == fame.tavernSatte){
 				
 				m.clip = backgrounds[1];
 				m.Play();
@@ -71,8 +74,8 @@ public class MusicManager : MonoBehaviour {
 				m.clip = backgrounds[1];
 				m.Play();
 				notChanged = false;
-			}
-	}
+			} 
+	}  
 
 
 	}
