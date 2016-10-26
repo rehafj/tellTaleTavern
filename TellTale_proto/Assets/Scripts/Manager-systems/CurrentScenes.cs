@@ -22,7 +22,7 @@ public enum SceneStaet {tavern, days, market}
  				Debug.Log("market is active ");
 				CurrentS = 	SceneStaet.market;
 				Debug.Log(CurrentS.ToString());
- 			} else if(scenes[1].activeInHierarchy){
+ 			} if(scenes[1].activeInHierarchy){
 
 				//SceneChaged = true;
 				CurrentS = 	SceneStaet.tavern;
