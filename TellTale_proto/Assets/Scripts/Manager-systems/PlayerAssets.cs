@@ -144,7 +144,7 @@ public class PlayerAssets : MonoBehaviour {
 
 
 	public  void Sell(){
-
+		soldItems.Clear();
 		SellSystem();// will generate a new list of sold items and adds them to it based on the whiteboard note 
 		TheActualSelling();	//will go through the actuall list of items to be sold 
 		DisplayinTextBar(); // and finnaly display it in text area 
@@ -156,7 +156,8 @@ public class PlayerAssets : MonoBehaviour {
 	//this is just to add it to a list of items being sold   - will not calcualte the profits here 
 	// note to self: this is superlong - needs to get refactored... 
 	public void  SellSystem(){
-
+		//reset values to 0 before adding up new counters 
+		ResetVaribles();
 		 GetBarStatus(); //this will increase the max sell day for each one of them 
 		 //after determing the max sell rate( if any is added) it iwll loop through 'my items' list of all items boght
 		for (int i = 0; i< myitems.Count; i++){
@@ -164,7 +165,7 @@ public class PlayerAssets : MonoBehaviour {
 				if(myitems[i].itemType == Item.ItemType.brew && bevCounter <= MaxSellBearDay)
 				{ //in this case 3 per day 
 								bevCounter++; //incread the counter - max sell date will be the 20% base of single day 
-							
+
 
 						if(myitems[i].ThisQuality == Item.quality.high && bevCounter  < 2) //numbers are for max high of drinks to be sold
 								{
@@ -253,6 +254,7 @@ public class PlayerAssets : MonoBehaviour {
 		keepBeer();
 		myitems.Clear();
 		reAddBeer();
+		tempBeer.Clear();
 	}
 	public void keepBeer(){
 	//make a temp holder for beer items and then shift them inside after clearing the list
