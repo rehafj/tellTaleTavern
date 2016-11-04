@@ -25,7 +25,5 @@ public Text overLayGold;
 		overLayGold.text = playerthigs.gold.ToString() + " gold";
 		BarStatas.text = "bar status: " + currentFame.getStateInString();
 		time.text = times.returnDaytoString() + " \n hour: "+times.Hour.ToString() + "min : "+times.min.ToString(); 
-
-	
 	}
 }
