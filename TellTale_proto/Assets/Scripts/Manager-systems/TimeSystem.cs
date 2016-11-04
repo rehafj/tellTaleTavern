@@ -4,6 +4,9 @@ using System.Collections;
 public class TimeSystem : MonoBehaviour {
 
 	public static TimeSystem _instance;
+
+	//AGG DO NOT LIEK THIS -- ADDED THIS FOR TESTING FOR NOW
+	public MyAcchivments ACCsystem;
 //	public DisableFlowCharts fl;
 	public int Hour=0;
 	public  int day=0;														
@@ -20,6 +23,8 @@ public class TimeSystem : MonoBehaviour {
 	/// </summary>
 	void Awake()
         {
+
+		ACCsystem = FindObjectOfType<MyAcchivments>();
         //fl = FindObjectOfType<DisableFlowCharts>();
 
 		if (_instance == null)
@@ -160,6 +165,7 @@ public class TimeSystem : MonoBehaviour {
 		switch(day){
 			case 0:
 				//Debug.Log("Monday");
+				//ACCsystem.AddAchicv("your adventure awaits", "you started the game, good for you");
 				return "day 1 ";
 			case 1: 
 				//Debug.Log("tuesday");
