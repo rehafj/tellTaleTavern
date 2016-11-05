@@ -3,8 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-public class MyAcchivments : MonoBehaviour {
 
+/// <summary>
+/// OLD ADD AS YOU GO --- better not to use this 
+/// </summary>
+public class MyAcchivments : MonoBehaviour {
+//old dynaic achivment system 
 	public static List<AchivSystem> achivments = new List<AchivSystem>();
 	bool Found;
 	public Text AchivText;
