@@ -35,6 +35,6 @@ public enum SceneStaet {tavern, days, market}
 
  public void Update(){
 
-		Debug.Log(CurrentS.ToString());
+//		Debug.Log(CurrentS.ToString());
  }
 }
