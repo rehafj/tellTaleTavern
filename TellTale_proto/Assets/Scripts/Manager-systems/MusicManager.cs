@@ -93,7 +93,8 @@ public class MusicManager : MonoBehaviour
     public void stopMusic()
     {
         //add checko if si playing
+        if(m!=null){
         m.Stop();
-    }
+    }}
 
 }
