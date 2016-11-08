@@ -37,6 +37,9 @@ public class Item : MonoBehaviour {
 
 	int tempStock;
 
+	public Button addThisBtn ;
+	bool entredToday = false;
+	int OldDayTracker = 0;
 
 
 	//for styling gui later on ( THE BOX FLOAT THING)
@@ -46,14 +49,18 @@ public class Item : MonoBehaviour {
 	
 	
 	void Awake(){
+		
 			dayTime = FindObjectOfType<TimeSystem>();
 			playerAsset = FindObjectOfType<PlayerAssets>();
 			tavernStat = FindObjectOfType<FameSystem>();
 			tmp = FindObjectOfType<TempStock>();
 			setItemData(ThisQuality);
+			addThisBtn = gameObject.GetComponentInChildren<Button>();
 			checkAvaiblity(dayUnAvaible);
 			setupTextFeilds();
 			tempStock = this.stock;
+
+
 
 	}
 
@@ -64,6 +71,7 @@ public class Item : MonoBehaviour {
 		style.fontSize = 26;
 
 	}
+
 	//method to setup text feilds 
 	public void setupTextFeilds(){
 			Button_text.text = "buy " + this.titile;
@@ -83,11 +91,14 @@ public class Item : MonoBehaviour {
 
 		}
 		//have to find a better way 
-		if(tmp.hasBenReset){
+		if(TempStock.hasBenReset==true){
 		Debug.Log("true!");
 			clear();
 		}
+
+		Debug.Log(this.titile + "  has stock of :"+ stock.ToString() +" and  temp stock of :"+tempStock.ToString());
 	}
+
 
 	//based on the item data set the price and stock - can be played and add a rnd value 
 	public  void setItemData(quality qualityValue){
@@ -96,7 +107,7 @@ public class Item : MonoBehaviour {
 
 		//case quality.high:
 		case quality.high:
-			this.stock = 3;
+			this.stock = 10;
 			this.price = 100;
 			break;
 		case quality.mid:
@@ -118,13 +129,17 @@ public class Item : MonoBehaviour {
 
 				if(dayTime.day == unavaibleDay){
 					//gameObject.SetActive(false);
+					ChangeColor(0);
+					addThisBtn.interactable = false;
 					isAvailable = false;
 			
 			}
 				else {
 					//gameObject.SetActive(true);
 					isAvailable = true;
-					Debug.Log("item is avaible");
+					addThisBtn.interactable = true;
+					ChangeColor(1);
+//					Debug.Log("item is avaible");
 				}
 		}
 		//need to clear quantity 
@@ -135,33 +150,79 @@ public class Item : MonoBehaviour {
 		}
 	}
 
-	public void increaseQuantity(){
-		if(this.isAvailable && tempStock>=0){
-		quantToBuy = quantToBuy+1;
-		tempStock--;
-		txt_quantity.text = quantToBuy.ToString();
-		txt_stock.text = tempStock.ToString();}
+	public void resetTempStock(){
+		this.tempStock = stock;
+	}
 
+	public void increaseQuantity(){
+
+		if(this.isAvailable && tempStock>=0){
+			quantToBuy = quantToBuy+1;
+			tempStock--;
+			txt_quantity.text = quantToBuy.ToString();
+			txt_stock.text = tempStock.ToString();}
+			
 
 	}
+
+
+	/// <summary>
+	///New methods 
+	/// </summary>
 	public void clear(){
+		Debug.Log("clear was called");
 		txt_quantity.text = "0";
 		quantToBuy = 0;
+		txt_stock.text = this.stock.ToString();
+
 	}
 
 	//called evryday
 	//ask team on toher methods of doing this - brain hurts!
 	void OnEnable(){
-	if( MoveToNext.dayChanged)
-		reStock();//add something to check day changed
+		//add a check for end of each day liek a counter to reset it based on day and enabled 
+		if(OldDayTracker == dayTime.getDayInInt()){
+			OldDayTracker ++; //0 
+			reStock();//
+			resetTempStock();
+			txt_quantity.text = "";
+			txt_stock.text = this.stock.ToString();
+
+			if(OldDayTracker >4){
+				OldDayTracker = 0; // or simply reset with game over reset all data 
+			}
+			//entredToday = true;
+		//setItemData(ThisQuality);
+		}
+//	if( MoveToNext.dayChanged)
+		//reStock();//add something to check day changed
 	}
+
+
 	public void reStock(){
-		 this.setItemData(ThisQuality);
+
+		switch(ThisQuality){
+
+		//case quality.high:
+		case quality.high:
+			this.stock = 10;
+			break;
+		case quality.mid:
+			this.stock = 6;
+			break;
+		 default :
+			this.stock = 10;
+			break;
+	}
+
 	}
 
 
 
-		//run this through all items stroed in a list 
+
+
+
+		//run this through all items stroed in a list - the remp class ( shopping cart uses thos pne ) 
 	public void buyItemNew(){
 		checkAvaiblity(dayUnAvaible);
 
@@ -180,24 +241,9 @@ public class Item : MonoBehaviour {
 				}//increase BAR FAME or on player assets page 
 
 			}
-		}else if (isAvailable == false || stock <= 0){
-			//GUI.Label(new Rect(10, 10, 100, 20), "Out of stock!");
-				if(txt_textField !=null){
-				if( isAvailable == false ){
-					txt_textField.text ="sorry one of the items was not avaible ";
-				}
+		}//	Debug.Log("sorry out of that item");
 
-				else if(playerAsset.gold<=this.price){
-
-					//	txt_textField.text ="looks you are running short ";
-
-				}}//	Debug.Log("sorry out of that item");
-
-		} else {
-			if(txt_textField !=null){
-						
-						txt_textField.text =" looks liek you are short on Gold there";
-						}}}
+		} 
 
 
 
@@ -205,7 +251,7 @@ public class Item : MonoBehaviour {
 	/// <summary>
 	/// ///////////////////////////////////////////
 	/// </summary>
-
+	///the old one uses this one --- 
 		//run this through all items stroed in a list 
 	public void buyItem(){
 		Debug.Log("entred buy item");
@@ -288,6 +334,19 @@ public class Item : MonoBehaviour {
 	//	this.toBuy =int.TryParse(input);
 	}
 
+
+	public void ChangeColor(int oFFon){
+		ColorBlock tempColor = addThisBtn.colors;
+		if(oFFon == 0){
+		tempColor.normalColor = Color.red;
+		addThisBtn.colors = tempColor;
+		}
+		else {
+			tempColor.normalColor = Color.white;
+			addThisBtn.colors = tempColor;
+
+		}
+		}
 	//TODO: 
 		//gui events 
 		//this method os not needed ... 

@@ -14,7 +14,7 @@ public class FameSystem : MonoBehaviour {
 	//singlton pattern incase we wanted to move it across scenes / might do the same with the player manager 
 	public void Awake(){
 		tavernSatte = TavernState.trash;
-		Debug.Log("string value is "+ 	tavernSatte.ToString());
+//		Debug.Log("string value is "+ 	tavernSatte.ToString());
 
 		if(!_instance){
 			_instance = this;
@@ -27,7 +27,7 @@ public class FameSystem : MonoBehaviour {
 
 
 	public void Update(){
-		Debug.Log("the bar's status us "+ this.tavernSatte.ToString());
+//		Debug.Log("the bar's status us "+ this.tavernSatte.ToString());
 	}
 	/// <summary>
 	/// Change the state of the tavern.
@@ -43,7 +43,7 @@ public class FameSystem : MonoBehaviour {
 
 	void setBarStatus(int val){
 		// not using a switch here - faster if value is a range/ not index 
-		Debug.Log("updated value of bar");
+//		Debug.Log("updated value of bar");
 			if( val >= 100){//greater tahn 100 points - wow  A garade
 				tavernSatte = TavernState.fancypants;
 
