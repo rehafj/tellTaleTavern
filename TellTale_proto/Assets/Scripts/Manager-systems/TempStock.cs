@@ -48,7 +48,7 @@ public class TempStock : MonoBehaviour {
 		//temporary fix
 		totalToBuyText[0].text = "";
 		totalToBuyText[1].text = "";
-		//totalToBuyText[2].text = "";
+		totalToBuyText[2].text = "";
 	}
 
 
