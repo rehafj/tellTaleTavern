@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
-
+///main achivment system 
 
 /// <summary>
 /// new classs for achivmenet managment 
@@ -90,7 +90,7 @@ public class AchivmentsTest : MonoBehaviour {
 		achivmentsTest.Add(001, new AchivSystem("Game stared~" ,false, "you began the game",10));
 		achivmentsTest.Add(002, new AchivSystem("Game stared~" ,false, "you began the game",10));
 		achivmentsTest.Add(003, new AchivSystem("Game stared~" ,false, "you began the game",10));
-		achivmentsTest.Add(004, new AchivSystem("Game stared~" ,false, "you began the game",10));
+		achivmentsTest.Add(004, new AchivSystem("visted brew" ,false, "you began the game",10));
 		achivmentsTest.Add(005, new AchivSystem("Game stared~" ,false, "you began the game",10));
 		achivmentsTest.Add(006, new AchivSystem("Game stared~" ,false, "you began the game",10));
 		achivmentsTest.Add(007, new AchivSystem("Game stared~" ,false, "you began the game",10));
@@ -99,6 +99,8 @@ public class AchivmentsTest : MonoBehaviour {
 		achivmentsTest.Add(010, new AchivSystem("Game stared~" ,false, "you began the game",10));
 		achivmentsTest.Add(011, new AchivSystem("Game stared~" ,false, "you began the game",10));
 		achivmentsTest.Add(012, new AchivSystem("Game stared~" ,false, "you began the game",10));
+		achivmentsTest.Add(333, new AchivSystem("Make it rain~" ,false, "you began the game",10));
+
 
 	}
 
