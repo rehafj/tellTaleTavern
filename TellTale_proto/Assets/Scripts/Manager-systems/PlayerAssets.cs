@@ -34,10 +34,17 @@ public class PlayerAssets : MonoBehaviour {
 	string mystring = "item: ";
 	string soldFor ="price: ";
 
+	AchivmentsTest test;
+
 	TempStock tmp; 
 	void Awake(){
 		startGold = gold; //to calculate profits from the bening 
 		TavernFameState = FindObjectOfType<FameSystem>();
+
+	}
+
+	void Start(){
+		test = FindObjectOfType<AchivmentsTest>();
 
 	}
 	void Update(){
@@ -47,6 +54,14 @@ public class PlayerAssets : MonoBehaviour {
 				//sellItemsquality();
 
 		}
+
+
+		//make it rain achivment 
+		if (gold >500){
+			test.addEarnedAchiv(333);
+			//AchivmentsTest.achivmentsTest.addEarnedAchiv(333);
+		}
+
 	}
 
 	//this method is called from items when ever we buy we add that item to tne list of items here called myitems
