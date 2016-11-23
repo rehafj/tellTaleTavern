@@ -50,6 +50,8 @@ public class MusicManager : MonoBehaviour
             m.clip = backgrounds[0];
             m.Play();
             notChanged = false;
+//day2 = 1; day3 = 3; day4 = 4; day5 = 7;
+
 
         }
         if (sceneState.CurrentS == CurrentScenes.SceneStaet.tavern)
@@ -60,7 +62,7 @@ public class MusicManager : MonoBehaviour
             {
 
 
-                m.clip = backgrounds[1];
+                m.clip = backgrounds[5];
                 m.Play();
                 notChanged = false;
 
@@ -69,7 +71,7 @@ public class MusicManager : MonoBehaviour
             if (FameSystem.TavernState.trash == fame.tavernSatte)
             {
 
-                m.clip = backgrounds[1];
+                m.clip = backgrounds[6];
                 m.Play();
                 notChanged = false;
 
@@ -78,7 +80,7 @@ public class MusicManager : MonoBehaviour
             {
 
 
-                m.clip = backgrounds[1];
+                m.clip = backgrounds[2];
                 m.Play();
                 notChanged = false;
             }
