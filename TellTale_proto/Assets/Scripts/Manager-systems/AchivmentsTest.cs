@@ -13,6 +13,7 @@ public class AchivmentsTest : MonoBehaviour {
 	public static Dictionary < int ,AchivSystem> achivmentsTest = new Dictionary < int ,AchivSystem>();
 	public Text AchivText;
 	public GameObject achivPanel; 
+	public DisplayAchiv laoder;
 	//used to add new achivments 
 
 	public void Awake(){
@@ -23,8 +24,11 @@ public class AchivmentsTest : MonoBehaviour {
 		achivPanel.SetActive(false);
 		//AchivSystem temp = new AchivSystem("Game stared~" ,true, "you began the game");
 		//achivmentsTest.Add(temp);
-
 		InitilizeAchivments();
+
+		laoder = FindObjectOfType<DisplayAchiv>();//finds the achiv loeader
+		//loadDictionary();
+
 		addEarnedAchiv( 000);
 		StartCoroutine(displayLastAciv(achivmentsTest[000], 4));
 
@@ -45,7 +49,7 @@ public class AchivmentsTest : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.A)){
 			Debug.Log("achivemtn a added");
 			addEarnedAchiv(005);
-			SaveData();
+		//	GetAchivments();
 		//achivmentsTest.Add(temp);
 
 
@@ -198,7 +202,97 @@ public class AchivmentsTest : MonoBehaviour {
 //		}
 	}
 
+/// <summary>
+/// retrives and gets the achivments 
+/// </summary>
+/// <returns>The save date.</returns>
 
+
+
+	public Dictionary <string, string> GetAchivmentsAsString(){
+
+		int Lockedcount = 0;
+		int UnlockedCOUNT = 0;
+
+		Dictionary <string, string> tempUnlokcedAchiv = new Dictionary <string, string>();;
+		 
+		foreach ( var item in achivmentsTest){
+
+			if(item.Value.unlocked){
+				UnlockedCOUNT++;
+				tempUnlokcedAchiv.Add(item.Value.titile, item.Value.discription);
+
+		}
+			if(! item.Value.unlocked){
+				Lockedcount ++;
+				//Debug.Log("ID"+ item.Key+" VALUE IS LOCKED ");
+			}
+
+		}
+
+		foreach ( var item in tempUnlokcedAchiv){
+
+			Debug.Log(item.Key.ToString() + " titile was unlocked and had a discrioton of "+ item.Value.ToString() + "you have unlocked : " + UnlockedCOUNT); 
+		}
+		return 	tempUnlokcedAchiv;
+
+
+		
+	}
+
+
+
+	/// <summary>
+	/// returns a dictionary of ubnlokced achivmenrs
+	/// </summary>
+	/// <returns>The achivments as achiv.</returns>
+
+	///loads them back in and checks them aout gain  - prob with this it will play an aniamtion 
+	public void loadDictionary(){
+
+		if( laoder!= null){
+		foreach( var i in laoder.MovingAchiv) {
+				//unlockAchiv check 
+			//	addEarnedAchiv(i.Key);
+				achivmentsTest[i.Key].unlockAchiv();
+			Debug.Log(" readding already earned achiv "+ i.Key);
+		}}
+
+			
+	}
+
+
+
+	public Dictionary <int , AchivSystem> GetAchivmentsAsAchiv(){
+
+		int Lockedcount = 0;
+		int UnlockedCOUNT = 0;
+
+		Dictionary <int, AchivSystem> tempUnlokcedAchiv = new Dictionary <int, AchivSystem>();;
+
+		foreach ( var item in achivmentsTest){
+
+			if(item.Value.unlocked){
+				UnlockedCOUNT++;
+				tempUnlokcedAchiv.Add(item.Key, item.Value);
+
+		}
+			if(! item.Value.unlocked){
+				Lockedcount ++;
+				//Debug.Log("ID"+ item.Key+" VALUE IS LOCKED ");
+			}
+
+		}
+
+		foreach ( var item in tempUnlokcedAchiv){
+
+			Debug.Log(item.Key.ToString() + " titile was unlocked and had a discrioton of "+ item.Value.ToString() + "you have unlocked : " + UnlockedCOUNT); 
+		}
+		return 	tempUnlokcedAchiv;
+
+
+		
+	}
 
 
 }
