@@ -52,7 +52,7 @@ public class DisplayAchiv : MonoBehaviour {
 	public void SaveAchivmAcrossScenes(){
 		achivStrings.Clear();
 		achivStrings = myAchivments.GetAchivmentsAsString();
-
+		//test
 	}
 	public void SaveAchivAcrossScenes(){
 		MovingAchiv.Clear();//this may produce a bug
