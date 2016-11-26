@@ -5,15 +5,69 @@ using System.Collections.Generic;
 
 public class DisplayAchiv : MonoBehaviour {
 
+	private static DisplayAchiv _instance;
+	public static DisplayAchiv Instance { get { return _instance; } }
+
 	int UnlockedCount;
 	int lockedCount;
 	public Text achivTxt;
-	GameObject Y;
-	string x = " " ;
 
-	List <string > achiv = new List<string>();
+	public  Dictionary < string ,string> achivStrings = new Dictionary < string , string>();
+	public  Dictionary < int ,AchivSystem> MovingAchiv = new Dictionary < int , AchivSystem>();
+
+	AchivmentsTest myAchivments; 
+
+	void Awake(){
+
+		DontDestroyOnLoad(gameObject);
+
+		myAchivments = FindObjectOfType<AchivmentsTest>();
+
+		if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        } else {
+            _instance = this;
+        }
+
+	}
+	void Update(){
+
+		if( Input.GetKeyDown(KeyCode.Q)){
+		//	/aveAchivmAcrossScenes();
+			SaveAchivAcrossScenes();
+			foreach( int k in MovingAchiv.Keys)
+			Debug.Log("avhivment unlocked as ID has "+ k);
+
+		}
+		if( Input.GetKeyDown(KeyCode.W)){
+			displayAchivmentsEarened();
 
 
+		}
+
+	}
+
+	//caall this method to save it into this dictionary 
+	public void SaveAchivmAcrossScenes(){
+		achivStrings.Clear();
+		achivStrings = myAchivments.GetAchivmentsAsString();
+		//test
+	}
+	public void SaveAchivAcrossScenes(){
+		MovingAchiv.Clear();//this may produce a bug
+		MovingAchiv = myAchivments.GetAchivmentsAsAchiv();
+
+	}
+
+	public void displayAchivmentsEarened(){
+		foreach( var k in MovingAchiv)
+			Debug.Log("avhivment unlocked as ID "+ k.Key+ " has titile "+ k.Value.titile);
+
+	}
+
+
+	/*
 	void Awake () {
 		UnlockedCount = PlayerPrefs.GetInt("UnlockedCOUNT");
 		lockedCount = PlayerPrefs.GetInt("Lockedcount");
@@ -87,5 +141,6 @@ public class DisplayAchiv : MonoBehaviour {
 			
 		}
 	}
-
+	/* 
+	*/
 }
