@@ -37,6 +37,7 @@ public class AchivmentsTest : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.Space)){
 			Debug.Log("adislay achivments");
 			displayAchivmentStats();
+			Debug.Log(PlayerPrefs.GetString("1"));
 		//achivmentsTest.Add(temp);
 
 
@@ -174,9 +175,10 @@ public class AchivmentsTest : MonoBehaviour {
 				UnlockedCOUNT++;
 				string achiv = item.Value.titile;
 				//PlayerPrefs.SetString( item.Key.ToString() , achiv);
-				//PlayerPrefs.SetString( item.Key.ToString() , achiv);
-				PlayerPrefs.SetString( UnlockedCOUNT.ToString() , achiv);	
-				Debug.Log(PlayerPrefs.GetString(UnlockedCOUNT.ToString() + " SAVED"));
+				PlayerPrefs.SetString( UnlockedCOUNT.ToString() , achiv);
+				//PlayerPrefs.SetString( UnlockedCOUNT.ToString() , achiv);	
+				Debug.Log("UnlockedCOUNT" + UnlockedCOUNT);
+				Debug.Log(PlayerPrefs.GetString(UnlockedCOUNT.ToString()) + " SAVED");
 			}
 			if(! item.Value.unlocked){
 				Lockedcount ++;

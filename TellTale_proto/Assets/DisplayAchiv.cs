@@ -17,13 +17,21 @@ public class DisplayAchiv : MonoBehaviour {
 	void Awake () {
 		UnlockedCount = PlayerPrefs.GetInt("UnlockedCOUNT");
 		lockedCount = PlayerPrefs.GetInt("Lockedcount");
+		//Debug.Log(" you have unlocked " + UnlockedCount + " and you have Loced... " + lockedCount );
+		//Debug.Log(PlayerPrefs.GetInt("1") + " was the achiv saved under ID 1");
+
+
 		//AddAchivToList();
 
 
 	}
 
 	void Start(){
+		for ( int i = 0 ; 0 < UnlockedCount ; i++) {
 
+			x = PlayerPrefs.GetString( i.ToString() );
+			 achiv.Add(x);
+		}
 
 	}
 
