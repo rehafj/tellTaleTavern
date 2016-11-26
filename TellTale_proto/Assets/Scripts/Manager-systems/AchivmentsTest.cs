@@ -21,10 +21,11 @@ public class AchivmentsTest : MonoBehaviour {
 		//or scriptable obkects 
 		achivPanel = GameObject.Find("achivPanel");
 		achivPanel.SetActive(false);
-		AchivSystem temp = new AchivSystem("Game stared~" ,true, "you began the game");
+		//AchivSystem temp = new AchivSystem("Game stared~" ,true, "you began the game");
 		//achivmentsTest.Add(temp);
-		achivmentsTest.Add(000, temp);
+
 		InitilizeAchivments();
+		addEarnedAchiv( 000);
 		StartCoroutine(displayLastAciv(achivmentsTest[000], 4));
 
 		//foreach(AchivSystem i in achivmentsTest){
@@ -43,6 +44,7 @@ public class AchivmentsTest : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.A)){
 			Debug.Log("achivemtn a added");
 			addEarnedAchiv(005);
+			SaveData();
 		//achivmentsTest.Add(temp);
 
 
@@ -86,7 +88,7 @@ public class AchivmentsTest : MonoBehaviour {
 
 	//add all achivments here - achivment name 0 titile - keep it at false here - discription - points worth 
 	public void InitilizeAchivments(){
-
+		achivmentsTest.Add(000, new AchivSystem("Adventure began!~" ,false, "you began the game",10));
 		achivmentsTest.Add(001, new AchivSystem("Game stared~" ,false, "you began the game",10));
 		achivmentsTest.Add(002, new AchivSystem("Game stared~" ,false, "you began the game",10));
 		achivmentsTest.Add(003, new AchivSystem("Game stared~" ,false, "you began the game",10));
@@ -153,4 +155,48 @@ public class AchivmentsTest : MonoBehaviour {
 			Debug.Log("ID"+ item.Key+" VALUE"+item.Value.unlocked);
 		}
 	}
+
+
+	/// <summary>
+	/// saving data across scene
+	/// </summary>
+	///this is not realistic at all idealy we will have them saved onto a json or xml file and parse from there
+	/// this is just for proof of concept for now - will update later with time
+	public static void SaveData(){
+
+	//	foreach( var  item in achivmentsTest){
+		int Lockedcount = 0;
+		int UnlockedCOUNT = 0;
+		foreach ( var item in achivmentsTest){
+			if(item.Value.unlocked){
+
+				//Debug.Log("ID"+ item.Key+" VALUE has been unlocked ");
+				UnlockedCOUNT++;
+				string achiv = item.Value.titile;
+				//PlayerPrefs.SetString( item.Key.ToString() , achiv);
+				//PlayerPrefs.SetString( item.Key.ToString() , achiv);
+				PlayerPrefs.SetString( UnlockedCOUNT.ToString() , achiv);	
+				Debug.Log(PlayerPrefs.GetString(UnlockedCOUNT.ToString() + " SAVED"));
+			}
+			if(! item.Value.unlocked){
+				Lockedcount ++;
+				//Debug.Log("ID"+ item.Key+" VALUE IS LOCKED ");
+			}
+
+			//	Debug.Log("ID"+ item.Key+" VALUE"+item.Value.unlocked);
+		}	PlayerPrefs.SetInt("Lockedcount", Lockedcount);
+			PlayerPrefs.SetInt("UnlockedCOUNT", UnlockedCOUNT);
+			Debug.Log(PlayerPrefs.GetInt("Lockedcount"));
+			PlayerPrefs.Save();
+
+
+//		foreach ( int key in achivmentsTest.Keys){
+//
+//			Debug.Log(" for key "+ key.ToString() + " has the avhimcent " + achivmentsTest.Values.ToString());
+//		}
+	}
+
+
+
+
 }
