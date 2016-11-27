@@ -9,6 +9,7 @@ public class PlayerAssets : MonoBehaviour {
 /// </summary>
 	public int gold = 300;
 	public int startGold; 
+
 	FameSystem TavernFameState;
 
 	//values can be played with this is just a counter and a max value to be sold per day 
@@ -129,6 +130,7 @@ public class PlayerAssets : MonoBehaviour {
 	}*/
 
 	public void DisplayinTextBar(){ //with all item values 
+		int z = 0;
 		//add a bool for a can click statment 
 		endofDaySale.text ="";
 		foreach (Item s in soldItems) {
@@ -146,12 +148,18 @@ public class PlayerAssets : MonoBehaviour {
 					s.tempGold= 150;
 			}
 		// mystring = mystring.ToString() +  s.ToString() + "\n" ;
-				mystring = mystring.ToString() + s.titile.ToString();
+				mystring = mystring.ToString() + s.titile.ToString() + "-\n";
 
-				soldFor = soldFor.ToString() + s.tempGold.ToString();
+			soldFor = soldFor.ToString() + s.tempGold.ToString()+"- gold \n";
+				z = z + s.tempGold;
+
+				endofDaySale.text = mystring +" " ;
+				endofdayGold.text =soldFor + " " 
+				 + " a totoal profit of " + z;
+
 		} 
 
-		endofDaySale.text = mystring +"\t" + soldFor + "gold\n"  ;
+	//	endofDaySale.text = mystring +"\t" + soldFor + "gold\n"  + " a totoal profit of " + z;
 
 			
 
@@ -182,16 +190,16 @@ public class PlayerAssets : MonoBehaviour {
 								bevCounter++; //incread the counter - max sell date will be the 20% base of single day 
 
 
-						if(myitems[i].ThisQuality == Item.quality.high && bevCounter  < 2) //numbers are for max high of drinks to be sold
+						if(myitems[i].ThisQuality == Item.quality.high && bevCounter  < 3) //numbers are for max high of drinks to be sold
 								{
 
 									soldItems.Add(myitems[i]);
 
-						}else if (myitems[i].ThisQuality == Item.quality.mid && bevCounter < 1){
+						}else if (myitems[i].ThisQuality == Item.quality.mid && bevCounter < 2){
 
 									soldItems.Add(myitems[i]);
 							}
-						else if (myitems[i].ThisQuality == Item.quality.low && bevCounter < 2) {
+						else if (myitems[i].ThisQuality == Item.quality.low && bevCounter < 3) {
 
 									soldItems.Add(myitems[i]);	
 
@@ -235,19 +243,19 @@ public class PlayerAssets : MonoBehaviour {
 						breadCounter++;
 						
 
-					if(myitems[i].ThisQuality == Item.quality.high && breadCounter  < 2)
+					if(myitems[i].ThisQuality == Item.quality.high && breadCounter  < 3)
 							{
 								soldItems.Add(myitems[i]);
 								expiredItems.Add(myitems[i]);
 								myitems.Remove(myitems[i]);
 
-					}else if (myitems[i].ThisQuality == Item.quality.mid && breadCounter < 1){
+					}else if (myitems[i].ThisQuality == Item.quality.mid && breadCounter < 5){
 
 								soldItems.Add(myitems[i]);
 								expiredItems.Add(myitems[i]);
 								myitems.Remove(myitems[i]);
 						}
-					else if (myitems[i].ThisQuality == Item.quality.low && breadCounter < 5) {
+					else if (myitems[i].ThisQuality == Item.quality.low && breadCounter < 6) {
 
 								soldItems.Add(myitems[i]);
 								expiredItems.Add(myitems[i]);
@@ -328,10 +336,10 @@ public class PlayerAssets : MonoBehaviour {
 
 		switch(TavernFameState.tavernSatte){
 			case FameSystem.TavernState.fancypants:
-				increaseSellRate(4);
+				increaseSellRate(8);
 				break;
 			case FameSystem.TavernState.high:
-				increaseSellRate(3);
+				increaseSellRate(4);
 				break;
 			case FameSystem.TavernState.mid:
 				increaseSellRate(2);
