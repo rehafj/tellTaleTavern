@@ -15,7 +15,7 @@ public class FameSystem : MonoBehaviour {
 	public void Awake(){
 		tavernSatte = TavernState.trash;
 //		Debug.Log("string value is "+ 	tavernSatte.ToString());
-
+/*
 		if(!_instance){
 			_instance = this;
 			DontDestroyOnLoad(gameObject);
@@ -23,7 +23,7 @@ public class FameSystem : MonoBehaviour {
 		else 
 			Destroy(gameObject);
 
-	}
+	}*/}
 
 
 	public void Update(){

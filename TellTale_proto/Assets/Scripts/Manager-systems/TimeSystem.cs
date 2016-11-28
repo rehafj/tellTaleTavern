@@ -39,7 +39,7 @@ public class TimeSystem : MonoBehaviour {
             // and do not destory current time objects
             DontDestroyOnLoad(gameObject);
             
-          
+         
         }
 
 	//for testing only - remove later 
