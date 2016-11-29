@@ -48,15 +48,15 @@ public class TextGui : MonoBehaviour {
 		switch(rnf){
 
 			case 1:
-				return "sigh ";
+				return "Remeber to put on your fairy repelling runes.";
 			case 2:
-				return " oh joy";
+				return "Cloudy with a chance of draconian warlord threats.";
 			case 3:
-				return "... great";
+				return "Another day another gold coin.";
 			case 4:
-			return "bean farming is a thing";
+			return "Bean farming is a thing...Allegedly.";
 			default:
-				return "maybe I should live in the woods";
+				return "An apple a day keeps the tree familiars mad as hell.";
 		}
 
 	}
