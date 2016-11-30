@@ -6,10 +6,11 @@ public class MusicManager : MonoBehaviour
 
 
     public AudioSource m;
-    public AudioClip[] backgrounds = new AudioClip[5];
+    public AudioClip[] backgrounds = new AudioClip[8];
 
     public FameSystem fame;
     CurrentScenes sceneState;
+    TimeSystem time;
 
 
     public bool notChanged = true;
@@ -18,6 +19,7 @@ public class MusicManager : MonoBehaviour
     {
         //			clip.playOnAwake = false;
         m = GetComponent<AudioSource>();
+        time = FindObjectOfType<TimeSystem>();
         m.playOnAwake = false;
         sceneState = FindObjectOfType<CurrentScenes>();
         fame = FindObjectOfType<FameSystem>();
@@ -45,10 +47,9 @@ public class MusicManager : MonoBehaviour
         Debug.Log("called music chnage");
         if (sceneState.CurrentS == CurrentScenes.SceneStaet.market)
         {
+			m.clip = SetmusicByDay();
             Debug.Log("Market music should be plaing");
-
-            m.clip = backgrounds[0];
-            m.Play();
+			m.Play();
             notChanged = false;
 //day2 = 1; day3 = 3; day4 = 4; day5 = 7;
 
@@ -58,7 +59,7 @@ public class MusicManager : MonoBehaviour
         {
             Debug.Log("Home music  music should be plaing");
 
-            if (FameSystem.TavernState.high == fame.tavernSatte)
+			if (FameSystem.TavernState.high == fame.tavernSatte || FameSystem.TavernState.fancypants == fame.tavernSatte) 
             {
 
 
@@ -68,7 +69,7 @@ public class MusicManager : MonoBehaviour
 
                 //play music for high or fancy 
             }
-            if (FameSystem.TavernState.trash == fame.tavernSatte)
+			if (FameSystem.TavernState.trash == fame.tavernSatte)
             {
 
                 m.clip = backgrounds[6];
@@ -80,7 +81,7 @@ public class MusicManager : MonoBehaviour
             {
 
 
-                m.clip = backgrounds[2];
+                m.clip = backgrounds[7];
                 m.Play();
                 notChanged = false;
             }
@@ -98,5 +99,32 @@ public class MusicManager : MonoBehaviour
         if(m!=null){
         m.Stop();
     }}
+
+
+	public AudioClip SetmusicByDay(){
+
+		switch( time.day){
+
+			case 0: 
+				Debug.Log("playing music of day one ");
+          	  return  backgrounds[0];
+
+          	case 1: 
+				Debug.Log("playing music of day two ");
+				return  backgrounds[1];
+
+			case 2: 
+				return  backgrounds[2];
+			case 3: 
+				return  backgrounds[3];
+			default:
+				return  backgrounds[4];
+
+          		
+				
+		}
+
+
+	}
 
 }
