@@ -81,7 +81,7 @@ public class MusicManager : MonoBehaviour
             {
 
 
-                m.clip = backgrounds[7];
+                m.clip = backgrounds[2];
                 m.Play();
                 notChanged = false;
             }
@@ -114,11 +114,11 @@ public class MusicManager : MonoBehaviour
 				return  backgrounds[1];
 
 			case 2: 
-				return  backgrounds[2];
-			case 3: 
 				return  backgrounds[3];
-			default:
+			case 3: 
 				return  backgrounds[4];
+			default:
+				return  backgrounds[7];
 
           		
 				
