@@ -14,7 +14,10 @@ public class AchivmentsTest : MonoBehaviour {
 	public Text AchivText;
 	public GameObject achivPanel; 
 	public DisplayAchiv laoder;
-	//used to add new achivments 
+	//used to add new achivments
+
+	public AudioSource achSound;
+
 
 	public void Awake(){
 		//TODO: ADD SINGLTON PATTERN TO MAKE IT APPEAR AT THE BENING BUT SO MANY DEPENDENCIES ...AGH 
@@ -34,6 +37,9 @@ public class AchivmentsTest : MonoBehaviour {
 
 		//foreach(AchivSystem i in achivmentsTest){
 		//	Debug.Log("added item "+ i.titile);
+		
+		achSound = GetComponent<AudioSource>();
+		
 		}
 
 	public void Update(){
@@ -80,6 +86,7 @@ public class AchivmentsTest : MonoBehaviour {
 	//}}
 
 	public IEnumerator displayLastAciv (AchivSystem a, float time){
+		achSound.Play();
 		achivPanel.SetActive(true);
 		AchivText.enabled = true;
 		AchivText.text = a.titile + "Achivment unlocked!";
@@ -87,6 +94,7 @@ public class AchivmentsTest : MonoBehaviour {
    	 	yield return new WaitForSeconds(time);
 		AchivText.enabled = false;
 		achivPanel.SetActive(false);
+		
 					
 	}
 
