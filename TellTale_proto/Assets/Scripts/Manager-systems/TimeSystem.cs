@@ -76,13 +76,13 @@ public class TimeSystem : MonoBehaviour {
 			else {
 				this.min = 0;
 				//hour was based on 11 for now changed to 3 just to cycle through the days
-				if(this.Hour<=3){//was 2 
+				if(this.Hour<=5){//was 2 
 					Debug.Log("Adding an hour");
 					this.Hour +=   1;
 
 
 					}
-				 if(this.Hour>3){
+				 if(this.Hour>5){
 						Debug.Log("hour greater than 3");
 
 				//	}

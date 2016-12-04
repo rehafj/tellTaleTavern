@@ -108,7 +108,7 @@ public class Item : MonoBehaviour {
 		//case quality.high:
 		case quality.high:
 			this.stock = 10;
-			this.price = 100;
+			this.price = 300;
 			break;
 		case quality.mid:
 			this.stock = 6;
@@ -314,7 +314,9 @@ public class Item : MonoBehaviour {
 				tavernStat.ChangeStateBare(0);
 				break;
 			default:
+				if(tavernStat.value > 0){
 				tavernStat.ChangeStateBare(-15);
+				}
 				break;
 		}
 			

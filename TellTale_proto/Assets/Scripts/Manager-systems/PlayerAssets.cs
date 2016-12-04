@@ -7,7 +7,7 @@ public class PlayerAssets : MonoBehaviour {
 /// <summary>
 /// add METHOD TO INCRASE PROFIT UNDER PLAYER GOLD TINGS 
 /// </summary>
-	public int gold = 300;
+	public int gold = 700;
 	public int startGold; 
 
 	FameSystem TavernFameState;
@@ -58,7 +58,7 @@ public class PlayerAssets : MonoBehaviour {
 
 
 		//make it rain achivment 
-		if (gold >500){
+		if (gold >2999){
 			test.addEarnedAchiv(333);
 			//AchivmentsTest.achivmentsTest.addEarnedAchiv(333);
 		}
@@ -318,13 +318,13 @@ public class PlayerAssets : MonoBehaviour {
 			string x = i.ThisQuality.ToString();
 
 			if(x == "high"){ 
-				gold += 200;
+				gold += 500;
 
 			} else if ( x == "low"){
-				gold += 50;
+				gold += 20;
 
 			} else{
-				gold += 150;
+				gold += 100;
 		}
 	}}
 
