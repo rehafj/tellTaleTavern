@@ -50,8 +50,8 @@ public class AchivmentsTest : MonoBehaviour {
 		laoder = FindObjectOfType<DisplayAchiv>();//finds the achiv loeader
 		//loadDictionary();
 
-		addEarnedAchiv( 000);
-		StartCoroutine(displayLastAciv(achivmentsTest[000], 4));
+		addEarnedAchiv(000);
+		StartCoroutine(displayLastAciv(achivmentsTest[000], 10));
 
 		//foreach(AchivSystem i in achivmentsTest){
 		//	Debug.Log("added item "+ i.titile);
@@ -94,7 +94,7 @@ public class AchivmentsTest : MonoBehaviour {
 	public void addEarnedAchiv(int ID){
 		if(achivmentsTest[ID].unlockAchiv()){
 
-			StartCoroutine(displayLastAciv(achivmentsTest[ID], 5));
+			StartCoroutine(displayLastAciv(achivmentsTest[ID], 10));
 			
 	}
 
