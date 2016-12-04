@@ -10,6 +10,9 @@ using UnityEngine.UI;
 public class AchivmentsTest : MonoBehaviour {
 
 
+	private static AchivmentsTest _instance;
+	public static AchivmentsTest Instance { get { return _instance; } }
+
 	public static Dictionary < int ,AchivSystem> achivmentsTest = new Dictionary < int ,AchivSystem>();
 	public Text AchivText;
 	public GameObject achivPanel; 
@@ -20,9 +23,24 @@ public class AchivmentsTest : MonoBehaviour {
 
 
 	public void Awake(){
+
+		DontDestroyOnLoad(gameObject);
+
+		//myAchivments = FindObjectOfType<AchivmentsTest>();
+
+		if (_instance != null && _instance != this)
+        {
+        	Debug.Log("game objecy destroyed");
+            Destroy(this.gameObject);
+        } else {
+            _instance = this;
+        }
+
+		
 		//TODO: ADD SINGLTON PATTERN TO MAKE IT APPEAR AT THE BENING BUT SO MANY DEPENDENCIES ...AGH 
 		//data base option or load and save states using player prefrs ofr something 
 		//or scriptable obkects 
+	
 		achivPanel = GameObject.Find("achivPanel");
 		achivPanel.SetActive(false);
 		//AchivSystem temp = new AchivSystem("Game stared~" ,true, "you began the game");
@@ -39,9 +57,8 @@ public class AchivmentsTest : MonoBehaviour {
 		//	Debug.Log("added item "+ i.titile);
 		
 		achSound = GetComponent<AudioSource>();
-		
-		}
 
+	}
 	public void Update(){
 
 		if(Input.GetKeyDown(KeyCode.Space)){
@@ -101,6 +118,7 @@ public class AchivmentsTest : MonoBehaviour {
 
 	//add all achivments here - achivment name 0 titile - keep it at false here - discription - points worth 
 	public void InitilizeAchivments(){
+		Debug.Log("initilizing achivments");
 		achivmentsTest.Add(000, new AchivSystem("Adventure began!~" ,false, "you began the game",10));
 		achivmentsTest.Add(001, new AchivSystem("Game stared~" ,false, "you began the game",10));
 		achivmentsTest.Add(002, new AchivSystem("Damn those Dukes!~" ,false, "you're enemies with the Dukes",10));
