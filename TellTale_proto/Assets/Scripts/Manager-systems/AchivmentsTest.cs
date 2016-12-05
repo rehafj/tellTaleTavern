@@ -10,16 +10,37 @@ using UnityEngine.UI;
 public class AchivmentsTest : MonoBehaviour {
 
 
+	private static AchivmentsTest _instance;
+	public static AchivmentsTest Instance { get { return _instance; } }
+
 	public static Dictionary < int ,AchivSystem> achivmentsTest = new Dictionary < int ,AchivSystem>();
 	public Text AchivText;
 	public GameObject achivPanel; 
 	public DisplayAchiv laoder;
-	//used to add new achivments 
+	//used to add new achivments
+
+	public AudioSource achSound;
+
 
 	public void Awake(){
+
+		DontDestroyOnLoad(gameObject);
+
+		//myAchivments = FindObjectOfType<AchivmentsTest>();
+
+		if (_instance != null && _instance != this)
+        {
+        	Debug.Log("game objecy destroyed");
+            Destroy(this.gameObject);
+        } else {
+            _instance = this;
+        }
+
+		
 		//TODO: ADD SINGLTON PATTERN TO MAKE IT APPEAR AT THE BENING BUT SO MANY DEPENDENCIES ...AGH 
 		//data base option or load and save states using player prefrs ofr something 
 		//or scriptable obkects 
+	
 		achivPanel = GameObject.Find("achivPanel");
 		achivPanel.SetActive(false);
 		//AchivSystem temp = new AchivSystem("Game stared~" ,true, "you began the game");
@@ -29,13 +50,15 @@ public class AchivmentsTest : MonoBehaviour {
 		laoder = FindObjectOfType<DisplayAchiv>();//finds the achiv loeader
 		//loadDictionary();
 
-		addEarnedAchiv( 000);
-		StartCoroutine(displayLastAciv(achivmentsTest[000], 4));
+		addEarnedAchiv(000);
+		StartCoroutine(displayLastAciv(achivmentsTest[000], 10));
 
 		//foreach(AchivSystem i in achivmentsTest){
 		//	Debug.Log("added item "+ i.titile);
-		}
+		
+		achSound = GetComponent<AudioSource>();
 
+	}
 	public void Update(){
 
 		if(Input.GetKeyDown(KeyCode.Space)){
@@ -71,7 +94,7 @@ public class AchivmentsTest : MonoBehaviour {
 	public void addEarnedAchiv(int ID){
 		if(achivmentsTest[ID].unlockAchiv()){
 
-			StartCoroutine(displayLastAciv(achivmentsTest[ID], 5));
+			StartCoroutine(displayLastAciv(achivmentsTest[ID], 10));
 			
 	}
 
@@ -80,6 +103,7 @@ public class AchivmentsTest : MonoBehaviour {
 	//}}
 
 	public IEnumerator displayLastAciv (AchivSystem a, float time){
+		achSound.Play();
 		achivPanel.SetActive(true);
 		AchivText.enabled = true;
 		AchivText.text = a.titile + "Achivment unlocked!";
@@ -87,12 +111,14 @@ public class AchivmentsTest : MonoBehaviour {
    	 	yield return new WaitForSeconds(time);
 		AchivText.enabled = false;
 		achivPanel.SetActive(false);
+		
 					
 	}
 
 
 	//add all achivments here - achivment name 0 titile - keep it at false here - discription - points worth 
 	public void InitilizeAchivments(){
+		Debug.Log("initilizing achivments");
 		achivmentsTest.Add(000, new AchivSystem("Adventure began!~" ,false, "you began the game",10));
 		achivmentsTest.Add(001, new AchivSystem("Game stared~" ,false, "you began the game",10));
 		achivmentsTest.Add(002, new AchivSystem("Damn those Dukes!~" ,false, "you're enemies with the Dukes",10));

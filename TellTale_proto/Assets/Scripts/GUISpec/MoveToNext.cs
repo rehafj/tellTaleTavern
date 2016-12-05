@@ -21,6 +21,10 @@ public class MoveToNext : MonoBehaviour {
 	//public GameObject NextScreen;
 	public GameObject parentScreen;
 	public GameObject MarketScreen;
+	public GameObject EndOfDayScene;
+
+
+
 
 	void OnEnable(){
 		
@@ -71,7 +75,14 @@ public class MoveToNext : MonoBehaviour {
 		}
 	
 	}
+
+	if(Input.GetKeyDown(KeyCode.L)){
+			ResetDat();
+
 	}
+	}
+
+
 
 	void setUpTime(){
 		startTime = Time.time;
@@ -110,15 +121,26 @@ public class MoveToNext : MonoBehaviour {
 
 	}
 
+	public void ResetDat(){
+
+		
+		MarketScreen.SetActive(true);
+		Debug.Log("activating "+ MarketScreen.ToString());
+		EndOfDayScene.SetActive(false);
+		Debug.Log("deactiving "+ EndOfDayScene.ToString());
+		
+	}
+
 	//for muce clicks 
 
 	public void activateNext(GameObject ob){
 	ob.SetActive(true);
+	Debug.Log("clicked");
 
 	}
 	public void deActivate(GameObject ob){
 		ob.SetActive(false);
-
+		Debug.Log("deactivated");
 	}
 
 

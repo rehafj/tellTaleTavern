@@ -13,7 +13,7 @@ public class FameSystem : MonoBehaviour {
 
 	//singlton pattern incase we wanted to move it across scenes / might do the same with the player manager 
 	public void Awake(){
-		tavernSatte = TavernState.trash;
+		tavernSatte = TavernState.mid;
 //		Debug.Log("string value is "+ 	tavernSatte.ToString());
 /*
 		if(!_instance){
@@ -44,17 +44,17 @@ public class FameSystem : MonoBehaviour {
 	void setBarStatus(int val){
 		// not using a switch here - faster if value is a range/ not index 
 //		Debug.Log("updated value of bar");
-			if( val >= 100){//greater tahn 100 points - wow  A garade
+			if( val >= 201 ){//greater tahn 100 points - wow  A garade
 				tavernSatte = TavernState.fancypants;
 
-			}else if ( val <100 && val >= 80){ //between 80-100 b grade bar 
+			}else if ( val <201 && val >= 121){ //between 80-100 b grade bar 
 
 				tavernSatte = TavernState.high;
 
-			}else if ( val < 80 && val >= 60){ 
+			}else if ( val < 121 && val >= 81){ 
 				tavernSatte = TavernState.mid;
 
-			} else  if (val >= 40){
+			} else  if (val >= 21){
 
 				tavernSatte = TavernState.low;
 			}

@@ -11,6 +11,11 @@ public class DisplayAchiv : MonoBehaviour {
 	int UnlockedCount;
 	int lockedCount;
 	public Text achivTxt;
+	public Text DisplaYuNLOKCED;
+	public Text diplsayInformation;
+
+	string mystring;
+	string discription;
 
 	public  Dictionary < string ,string> achivStrings = new Dictionary < string , string>();
 	public  Dictionary < int ,AchivSystem> MovingAchiv = new Dictionary < int , AchivSystem>();
@@ -30,6 +35,14 @@ public class DisplayAchiv : MonoBehaviour {
             _instance = this;
         }
 
+	
+	}
+
+	void Start(){
+
+		DisplaYuNLOKCED = GameObject.Find("AT1").GetComponent<Text>();
+		diplsayInformation = GameObject.Find("AT2").GetComponent<Text>();
+
 	}
 	void Update(){
 
@@ -47,6 +60,27 @@ public class DisplayAchiv : MonoBehaviour {
 		}
 
 	}
+
+	public void DisplayAchivments(){ //with all item values 
+
+		//add a bool for a can click statment 
+		DisplaYuNLOKCED.text ="";
+		diplsayInformation.text = "";
+		foreach (var k in MovingAchiv) {
+
+		//dupilcate code just for testing for now 
+			string x = k.Value.titile;
+
+		// mystring = mystring.ToString() +  s.ToString() + "\n" ;
+			mystring = mystring.ToString() + x + "-\n";
+
+			 discription = discription.ToString() + k.Value.discription+"- gold \n";
+
+
+			DisplaYuNLOKCED.text = mystring +" " ;
+			diplsayInformation.text =discription + " " ;
+
+		} }
 
 	//caall this method to save it into this dictionary 
 	public void SaveAchivmAcrossScenes(){
