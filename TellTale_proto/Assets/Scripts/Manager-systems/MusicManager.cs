@@ -40,7 +40,7 @@ public class MusicManager : MonoBehaviour
 
 
     public void changeMusic()
-    {
+    {	
 
 
         m.Stop();
@@ -63,8 +63,26 @@ public class MusicManager : MonoBehaviour
             {
 
 
-                m.clip = backgrounds[5];
-                m.Play();
+            	if(time.day == 1 || time.day == 4){
+					m.clip = backgrounds[0];
+              		 m.Play();
+
+            		
+            	}
+				if( time.day == 2 || time.day == 3){
+
+					m.clip = backgrounds[1];
+              		 m.Play();
+					
+				}
+				else {
+
+					m.clip = backgrounds[2];
+              		 m.Play();
+
+
+				}
+             
                 notChanged = false;
 
                 //play music for high or fancy 
@@ -72,8 +90,28 @@ public class MusicManager : MonoBehaviour
 			if (FameSystem.TavernState.trash == fame.tavernSatte)
             {
 
-                m.clip = backgrounds[6];
-                m.Play();
+
+				if(time.day == 1 || time.day == 4){
+					m.clip = backgrounds[3];
+              		 m.Play();
+
+            		
+            	}
+				if( time.day == 2 || time.day == 3){
+
+					m.clip = backgrounds[4];
+              		 m.Play();
+					
+				}
+				else {
+
+					m.clip = backgrounds[5];
+              		 m.Play();
+
+
+				}
+             
+            
                 notChanged = false;
 
             }
@@ -81,8 +119,27 @@ public class MusicManager : MonoBehaviour
             {
 
 
-                m.clip = backgrounds[2];
-                m.Play();
+				if(time.day == 1 || time.day == 4){
+					m.clip = backgrounds[6];
+              		 m.Play();
+
+            		
+            	}
+				if( time.day == 2 || time.day == 3){
+
+					m.clip = backgrounds[7];
+              		 m.Play();
+					
+				}
+				else {
+
+					m.clip = backgrounds[8];
+              		 m.Play();
+
+
+				}
+             
+         
                 notChanged = false;
             }
         }
@@ -107,18 +164,18 @@ public class MusicManager : MonoBehaviour
 
 			case 0: 
 				Debug.Log("playing music of day one ");
-          	  return  backgrounds[0];
+          	  return  backgrounds[9];
 
           	case 1: 
 				Debug.Log("playing music of day two ");
-				return  backgrounds[1];
+				return  backgrounds[10];
 
 			case 2: 
-				return  backgrounds[3];
+				return  backgrounds[11];
 			case 3: 
-				return  backgrounds[4];
+				return  backgrounds[12];
 			default:
-				return  backgrounds[7];
+				return  backgrounds[13];
 
           		
 				
