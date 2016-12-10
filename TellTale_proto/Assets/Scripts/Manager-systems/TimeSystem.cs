@@ -57,7 +57,7 @@ public class TimeSystem : MonoBehaviour {
 	//debugging purposes 
 	public void printCurrentTime(){
 
-			Debug.Log("time is day:"+day+" hour: "+ this.Hour + "min is "+ this.min);
+			Debug.Log("time is day:" +day+ " hour: "+ this.Hour +" min is "+ this.min);
 			
 	}
 
