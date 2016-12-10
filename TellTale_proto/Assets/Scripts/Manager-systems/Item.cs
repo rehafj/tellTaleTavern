@@ -68,10 +68,11 @@ public class Item : MonoBehaviour {
 	void Start(){
 
 		
-		descriptStyle.fontSize = 8;
+		descriptStyle.fontSize = 11;
         descriptStyle.alignment = TextAnchor.MiddleCenter;
         descriptStyle.font = openDyslexic;
         descriptStyle.wordWrap = true;
+      
         /*  style.fixedWidth = 300;
           style.padding.left = 3;
           style.padding.right = 3; 
