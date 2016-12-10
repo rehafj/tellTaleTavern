@@ -40,17 +40,17 @@ public class Item : MonoBehaviour {
 	public Button addThisBtn ;
 	bool entredToday = false;
 	int OldDayTracker = 0;
-
+    public Font openDyslexic;
 
 	//for styling gui later on ( THE BOX FLOAT THING)
-	GUIStyle style = new GUIStyle();
+	GUIStyle descriptStyle = new GUIStyle();
 
 //initilize setups 
 	
 	
 	void Awake(){
-		
-			dayTime = FindObjectOfType<TimeSystem>();
+
+        dayTime = FindObjectOfType<TimeSystem>();
 			playerAsset = FindObjectOfType<PlayerAssets>();
 			tavernStat = FindObjectOfType<FameSystem>();
 			tmp = FindObjectOfType<TempStock>();
@@ -67,13 +67,21 @@ public class Item : MonoBehaviour {
 	//after awake - for the box settings 
 	void Start(){
 
-		style.alignment = TextAnchor.MiddleCenter;
-		style.fontSize = 26;
+		
+		descriptStyle.fontSize = 8;
+        descriptStyle.alignment = TextAnchor.MiddleCenter;
+        descriptStyle.font = openDyslexic;
+        descriptStyle.wordWrap = true;
+        /*  style.fixedWidth = 300;
+          style.padding.left = 3;
+          style.padding.right = 3; 
+          style.padding.top = 3; 
+          style.padding.bottom = 3;
+          ;*/
+    }
 
-	}
-
-	//method to setup text feilds 
-	public void setupTextFeilds(){
+    //method to setup text feilds 
+    public void setupTextFeilds(){
 			Button_text.text = "buy " + this.titile;
 			txt_stock.text = "#"+ this.stock.ToString();
 			txt_price.text = this.price.ToString()+"gold";
@@ -361,7 +369,7 @@ public class Item : MonoBehaviour {
 		 {
 		if(mouceEnters == true){
 				//have to play with these values 
-			GUI.Box(new Rect(Screen.width/2 -200 ,Screen.height/2, Screen.width/4, Screen.height/4), this.discription);
+			GUI.Box(new Rect(Screen.width/2 -200 ,Screen.height/2, Screen.width/3, Screen.height/4), this.discription, descriptStyle);
 				//GUI.Label(new Rect(100,100,200,30),this.discription);
 				}
 		 }
