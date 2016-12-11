@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class SaveTransfers : MonoBehaviour {
 
@@ -32,5 +33,13 @@ public void Transfers(){
 	TavernState = TavernSte.getStateInString();
 	PlayerPrefs.SetInt ("GOLD", Gold);
 	PlayerPrefs.SetString("STATE", TavernState);
+}
+
+public void moveToNextScene(string sceneTitile){
+
+		Debug.Log("loading scene");
+
+		SceneManager.LoadScene(sceneTitile);
+
 }
 }
