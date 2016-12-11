@@ -35,8 +35,8 @@ CurrentScenes myState;
 		if(myState.CurrentS == CurrentScenes.SceneStaet.market ){
 
 			time.text = times.returnDaytoString() ;
-			Hour.text = " 11 " ;
-			Min.text =  "30 AM";
+			Hour.text = "hour: 11 " ;
+			Min.text =  "min :30 AM";
 
 		}
 

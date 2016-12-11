@@ -31,10 +31,11 @@ public class PlayerAssets : MonoBehaviour {
 	//temporary going to move this to itsown script if need be 
 	public Text endofDaySale;
 	public Text endofdayGold;
+	public Text ExtraGoldTendBar;
 
 	string mystring = "item: ";
 	string soldFor ="price: ";
-
+	public int tips;
 	AchivmentsTest test;
 
 	TempStock tmp; 
@@ -157,14 +158,19 @@ public class PlayerAssets : MonoBehaviour {
 				endofdayGold.text =soldFor + " " 
 				 + " a totoal profit of " + z;
 
+			
 		} 
-
+		ExtraGoldTendBar.text = " you made an extra profit of "+ tips.ToString() +"from tips, good job!";
 	//	endofDaySale.text = mystring +"\t" + soldFor + "gold\n"  + " a totoal profit of " + z;
 
 			
 
 	}
 
+	public void updateTips(int amount){
+		tips += amount;
+		gold+= tips;
+	}
 
 	public  void Sell(){
 		soldItems.Clear();
