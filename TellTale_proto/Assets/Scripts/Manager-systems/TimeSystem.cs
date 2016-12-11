@@ -8,7 +8,7 @@ public class TimeSystem : MonoBehaviour {
 	//AGG DO NOT LIEK THIS -- ADDED THIS FOR TESTING FOR NOW
 	public MyAcchivments ACCsystem;
 //	public DisableFlowCharts fl;
-	public int Hour=0;
+	public int Hour=7;
 	public  int day=0;														
 	public  float min=0;
 	public static int _day = 0; 
@@ -76,13 +76,13 @@ public class TimeSystem : MonoBehaviour {
 			else {
 				this.min = 0;
 				//hour was based on 11 for now changed to 3 just to cycle through the days
-				if(this.Hour<=5){//was 2 
+				if(this.Hour<=12){//was 2 
 					Debug.Log("Adding an hour");
 					this.Hour +=   1;
 
 
 					}
-				 if(this.Hour>5){
+				 if(this.Hour>12){ //was 5  - 7-12 ( counts 7 - 11) 
 						Debug.Log("hour greater than 3");
 
 				//	}
@@ -91,7 +91,7 @@ public class TimeSystem : MonoBehaviour {
 			//	else {
 					Debug.Log("am i going here");
 				//when the day ends reset hour and update day bu 1
-					this.Hour = 0;
+					this.Hour = 7;//as 0 
 					updateDay();}
 
 
@@ -141,7 +141,7 @@ public class TimeSystem : MonoBehaviour {
 	public void resetData(){
 
 			this.day = 0;
-			this.Hour = 0;
+			this.Hour = 7;
 			this.min = 0;
 	}
 
@@ -183,6 +183,23 @@ public class TimeSystem : MonoBehaviour {
 
 		}
 
+	}
+
+	//not worth it 
+	public int returnHourINSevens(){
+
+		if ( Hour == 0)
+			return 7;
+		else if( Hour == 1)
+			return 8;
+		else if ( Hour == 2)
+			return 9;
+		else if ( Hour ==3)
+			return 10;
+		else 
+			return 11;
+	 
+		
 	}
 
 	public int getDayInInt(){
