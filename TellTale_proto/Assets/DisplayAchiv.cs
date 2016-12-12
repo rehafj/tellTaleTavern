@@ -17,7 +17,7 @@ public class DisplayAchiv : MonoBehaviour {
 
 	string mystring ="";
 	string discription ="";
-
+	int totoalAchivDayOne = 10; // add totoal number of achiv for ep 1
 	public  Dictionary < string ,string> achivStrings = new Dictionary < string , string>();
 	public  Dictionary < int ,AchivSystem> MovingAchiv = new Dictionary < int , AchivSystem>();
 
@@ -41,6 +41,7 @@ public class DisplayAchiv : MonoBehaviour {
 	public void FindObjects(){
 		DisplaYukedTtile = GameObject.Find("AT1").GetComponent<Text>();
 		diplsayInformation = GameObject.Find("AT2").GetComponent<Text>();
+		achivTxt = GameObject.Find("AT3").GetComponent<Text>();
 
 	}
 //	void Start(){
@@ -71,8 +72,9 @@ public class DisplayAchiv : MonoBehaviour {
 		//add a bool for a can click statment 
 		DisplaYukedTtile.text ="";
 		diplsayInformation.text = "";
+		int count = totoalAchivDayOne;
 		foreach (var k in MovingAchiv) {
-
+			
 		//dupilcate code just for testing for now 
 			string x = k.Value.titile;
 
@@ -84,9 +86,23 @@ public class DisplayAchiv : MonoBehaviour {
 
 			DisplaYukedTtile.text = mystring +" " ;
 			diplsayInformation.text =discription + " " ;
+			count--;
+			//can add a yext field to dispaly ??? for all uncolleccted achiv -- ask team 
 
-		} }
+		} 
 
+		printX(count);
+
+		}
+
+	public void printX ( int counter){
+		for ( int i = 0; i< counter ; i ++){
+			achivTxt.text  = "acivment  : ????????????\n";
+			
+		}
+
+
+	}
 	//caall this method to save it into this dictionary 
 	public void SaveAchivmAcrossScenes(){
 		achivStrings.Clear();
