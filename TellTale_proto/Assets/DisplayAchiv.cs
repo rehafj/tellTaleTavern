@@ -73,6 +73,7 @@ public class DisplayAchiv : MonoBehaviour {
 		DisplaYukedTtile.text ="";
 		diplsayInformation.text = "";
 		int count = totoalAchivDayOne;
+
 		foreach (var k in MovingAchiv) {
 			
 		//dupilcate code just for testing for now 
