@@ -11,11 +11,12 @@ public class DisplayAchiv : MonoBehaviour {
 	int UnlockedCount;
 	int lockedCount;
 	public Text achivTxt;
-	public Text DisplaYuNLOKCED;
+
+	public Text DisplaYukedTtile;
 	public Text diplsayInformation;
 
-	string mystring;
-	string discription;
+	string mystring ="";
+	string discription ="";
 
 	public  Dictionary < string ,string> achivStrings = new Dictionary < string , string>();
 	public  Dictionary < int ,AchivSystem> MovingAchiv = new Dictionary < int , AchivSystem>();
@@ -37,13 +38,17 @@ public class DisplayAchiv : MonoBehaviour {
 
 	
 	}
-
-	void Start(){
-
-		DisplaYuNLOKCED = GameObject.Find("AT1").GetComponent<Text>();
+	public void FindObjects(){
+		DisplaYukedTtile = GameObject.Find("AT1").GetComponent<Text>();
 		diplsayInformation = GameObject.Find("AT2").GetComponent<Text>();
 
 	}
+//	void Start(){
+//
+//		DisplaYuNLOKCED = GameObject.Find("AT1").GetComponent<Text>();
+//		diplsayInformation = GameObject.Find("AT2").GetComponent<Text>();
+//
+//	}
 	void Update(){
 
 		if( Input.GetKeyDown(KeyCode.Q)){
@@ -64,7 +69,7 @@ public class DisplayAchiv : MonoBehaviour {
 	public void DisplayAchivments(){ //with all item values 
 
 		//add a bool for a can click statment 
-		DisplaYuNLOKCED.text ="";
+		DisplaYukedTtile.text ="";
 		diplsayInformation.text = "";
 		foreach (var k in MovingAchiv) {
 
@@ -77,7 +82,7 @@ public class DisplayAchiv : MonoBehaviour {
 			 discription = discription.ToString() + k.Value.discription+"- gold \n";
 
 
-			DisplaYuNLOKCED.text = mystring +" " ;
+			DisplaYukedTtile.text = mystring +" " ;
 			diplsayInformation.text =discription + " " ;
 
 		} }
@@ -91,6 +96,7 @@ public class DisplayAchiv : MonoBehaviour {
 	public void SaveAchivAcrossScenes(){
 		MovingAchiv.Clear();//this may produce a bug
 		MovingAchiv = myAchivments.GetAchivmentsAsAchiv();
+		displayAchivmentsEarened();
 
 	}
 
