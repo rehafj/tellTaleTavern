@@ -9,12 +9,13 @@ public FameSystem TavernSte;
 
 public int Gold;
 public string TavernState;
-
+DisplayAchiv moveAchiv;
 	void Start(){
 		plrGold = FindObjectOfType<PlayerAssets>();
 		TavernSte = FindObjectOfType<FameSystem>();
 		Gold = plrGold.gold;
 		TavernState = TavernSte.getStateInString();
+		moveAchiv = FindObjectOfType<DisplayAchiv>();
 
 	}
 
@@ -38,7 +39,7 @@ public void Transfers(){
 public void moveToNextScene(string sceneTitile){
 
 		Debug.Log("loading scene");
-
+		moveAchiv.SaveAchivAcrossScenes();
 		SceneManager.LoadScene(sceneTitile);
 
 }

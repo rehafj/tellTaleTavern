@@ -12,7 +12,11 @@ public class DisplayUnlockedNew : MonoBehaviour {
 	
 	// Update is called once per frame
 	void OnEnable () {
+		if(achivm == null){
+			achivm = FindObjectOfType<DisplayAchiv>();
 
+		}
+		achivm.FindObjects();
 		achivm.DisplayAchivments();
 	}
 
