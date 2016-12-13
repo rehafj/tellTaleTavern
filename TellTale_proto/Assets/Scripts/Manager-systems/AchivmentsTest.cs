@@ -181,6 +181,7 @@ public class AchivmentsTest : MonoBehaviour {
         achivmentsTest.Add(058, new AchivSystem("Getting to know you~", false, "Learned more about Ellington's past", 10));
         achivmentsTest.Add(059, new AchivSystem("I knew you were trouble when you walked in.", false, "Talked to Sasha", 10));
         achivmentsTest.Add(060, new AchivSystem("Blame it on the alcohol", false, "Got a fairy drunk so you could get tips, you monster.", 10));
+        achivmentsTest.Add(061, new AchivSystem("Captain of the Loveboat", false, "Get flirty with Sasha", 10));
 
     }
 
