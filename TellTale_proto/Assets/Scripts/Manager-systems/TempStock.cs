@@ -51,7 +51,7 @@ public class TempStock : MonoBehaviour {
 		totalToBuyText[2].text = "";
 	}
 
-
+	//get total and check totoal -> 
 	//when you click on buy 
 	public void checkTotal(){
 	if(btn!=null){
@@ -79,9 +79,59 @@ public class TempStock : MonoBehaviour {
 	}
 	}
 
+
+
+
+
+	public void NewBuyMethod(){
+
+		getTotalCostNew();
+		if(btn!=null){
+			tempGold = Mygold.gold;
+		if(totalEstimatedGold<=tempGold){ //need to check this shoul dnot buy it but it does 
+			AddToInventory();
+			clearTempList();
+			test();
+		}
+		else {
+			clearTempList();
+			test();
+
+		}
+		hasBenReset = false;
+		//disable button at end and change color 
+
+	
+	}
+	}
+
+
+	public void clearMarket(){
+		clearTempList();
+			test();
+			}
+
+	//like check totoal 
+	//call this in buy 
+	public void getTotalCostNew(){
+		totalEstimatedGold = 0;
+		foreach(Item i in tempList){
+
+			totalEstimatedGold += i.price;
+		}
+
+		int index = checkActiveMarket();
+		totalToBuyText[index].text = "Buy  "+ totalEstimatedGold.ToString();
+		btn = GameObject.Find("BuyGroup").GetComponent<Button>(); //ask josh about this -- refer notes below // or better to store it in the
+
+	}
+
 	//playerAsset.gold -= this.price;
 
 	//when you click on calcualte 
+
+	/// Old methods for the other bilds 
+	/// </summary>
 	public void test(){
 		Debug.Log("test IIIIIII ");
 		Item[] test = FindObjectsOfType(typeof(Item)) as Item[];

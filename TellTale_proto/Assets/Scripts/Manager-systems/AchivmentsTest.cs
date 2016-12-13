@@ -106,7 +106,7 @@ public class AchivmentsTest : MonoBehaviour {
 		achSound.Play();
 		achivPanel.SetActive(true);
 		AchivText.enabled = true;
-		AchivText.text = a.titile + "Achivment unlocked!";
+		AchivText.text = a.titile + "Achievement unlocked!";
 		Debug.Log("text feild should have "+ a.titile);
    	 	yield return new WaitForSeconds(time);
 		AchivText.enabled = false;
@@ -123,7 +123,7 @@ public class AchivmentsTest : MonoBehaviour {
 		achivmentsTest.Add(001, new AchivSystem("Game stared~" ,false, "you began the game",10));
 		achivmentsTest.Add(002, new AchivSystem("Damn those Dukes!~" ,false, "you're enemies with the Dukes",10));
 		achivmentsTest.Add(003, new AchivSystem("Here come the Dukes~" ,false, "you're friends with the Dukes",10));
-		achivmentsTest.Add(004, new AchivSystem("visted brew" ,false, "you began the game",10));
+		achivmentsTest.Add(004, new AchivSystem("Have a drink!" ,false, "you began the game",10));
 		achivmentsTest.Add(005, new AchivSystem("cishetmuch?~" ,false, "tell Wilma to marry the Prince",10));
 		achivmentsTest.Add(006, new AchivSystem("Game stared~" ,false, "you began the game",10));
 		achivmentsTest.Add(007, new AchivSystem("Friends in high places~" ,false, "become Royal Brewmaster",10));
@@ -175,6 +175,8 @@ public class AchivmentsTest : MonoBehaviour {
         achivmentsTest.Add(052, new AchivSystem("Finished a Game~", false, "you finished", 10));
         achivmentsTest.Add(053, new AchivSystem("Lone Wolf~", false, "You didn't get into this business to talk to people. You got into this business to take invetory, wipe down coutners and get people drunk.", 10));
         achivmentsTest.Add(054, new AchivSystem("Pauper", false, "Lose ALLLL your money", 10));
+		achivmentsTest.Add(055, new AchivSystem("Beautiful carbs", false, "visit the bakery", 10));
+		achivmentsTest.Add(056, new AchivSystem("But I don't like spam!", false, "visit butcher", 10));
     }
 
 
