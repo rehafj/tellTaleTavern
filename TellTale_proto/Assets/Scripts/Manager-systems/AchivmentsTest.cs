@@ -177,6 +177,11 @@ public class AchivmentsTest : MonoBehaviour {
         achivmentsTest.Add(054, new AchivSystem("Pauper", false, "Lose ALLLL your money", 10));
 		achivmentsTest.Add(055, new AchivSystem("Beautiful carbs", false, "visit the bakery", 10));
 		achivmentsTest.Add(056, new AchivSystem("But I don't like spam!", false, "visit butcher", 10));
+        achivmentsTest.Add(057, new AchivSystem("What's new pussycat?", false, "Talked to Ellington", 10));
+        achivmentsTest.Add(058, new AchivSystem("Getting to know you~", false, "Learned more about Ellington's past", 10));
+        achivmentsTest.Add(059, new AchivSystem("I knew you were trouble when you walked in.", false, "Talked to Sasha", 10));
+        achivmentsTest.Add(060, new AchivSystem("Blame it on the alcohol", false, "Got a fairy drunk so you could get tips, you monster.", 10));
+
     }
 
 
