@@ -70,7 +70,7 @@ public class DayOneMusicManager : MonoBehaviour {
                 notChanged = false;
 
             }
-            else
+            if( FameSystem.TavernState.low == fame.tavernSatte || FameSystem.TavernState.trash == fame.tavernSatte )
             {	
             	SetmusicByChoice(3);
                 notChanged = false;
