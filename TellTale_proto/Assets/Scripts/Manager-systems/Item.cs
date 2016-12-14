@@ -32,7 +32,7 @@ public class Item : MonoBehaviour {
 	PlayerAssets playerAsset; 
 	FameSystem tavernStat;
 	TempStock tmp;
-
+    Color white = Color.white;
 	bool mouceEnters = false;
 
 	int tempStock;
@@ -41,6 +41,7 @@ public class Item : MonoBehaviour {
 	bool entredToday = false;
 	int OldDayTracker = 0;
     public Font openDyslexic;
+    public Texture2D whiteFelt;
 
 	//for styling gui later on ( THE BOX FLOAT THING)
 	GUIStyle descriptStyle = new GUIStyle();
@@ -68,16 +69,18 @@ public class Item : MonoBehaviour {
 	void Start(){
 
 		
-		descriptStyle.fontSize = 11;
+		descriptStyle.fontSize = 12;
         descriptStyle.alignment = TextAnchor.MiddleCenter;
         descriptStyle.font = openDyslexic;
         descriptStyle.wordWrap = true;
-      
+        descriptStyle.normal.background = whiteFelt;
+        descriptStyle.padding.left = 3;
+        descriptStyle.padding.right = 3;
+        descriptStyle.padding.top = 3;
+        descriptStyle.padding.bottom = 3;
+        descriptStyle.normal.textColor = white;
         /*  style.fixedWidth = 300;
-          style.padding.left = 3;
-          style.padding.right = 3; 
-          style.padding.top = 3; 
-          style.padding.bottom = 3;
+          
           ;*/
     }
 
@@ -370,7 +373,9 @@ public class Item : MonoBehaviour {
 		 {
 		if(mouceEnters == true){
 				//have to play with these values 
-			GUI.Box(new Rect(Screen.width/2 -200 ,Screen.height/2, Screen.width/3, Screen.height/4), this.discription, descriptStyle);
+			GUI.Box(new Rect(Screen.width/2 -150 ,Screen.height/2 -100, Screen.width/3, Screen.height/4), this.discription, descriptStyle);
+            
+
 				//GUI.Label(new Rect(100,100,200,30),this.discription);
 				}
 		 }
