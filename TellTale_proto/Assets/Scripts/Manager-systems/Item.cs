@@ -69,7 +69,7 @@ public class Item : MonoBehaviour {
 	void Start(){
 
 		
-		descriptStyle.fontSize = 12;
+		descriptStyle.fontSize = 14;
         descriptStyle.alignment = TextAnchor.MiddleCenter;
         descriptStyle.font = openDyslexic;
         descriptStyle.wordWrap = true;
@@ -373,7 +373,7 @@ public class Item : MonoBehaviour {
 		 {
 		if(mouceEnters == true){
 				//have to play with these values 
-			GUI.Box(new Rect(Screen.width/2 -150 ,Screen.height/2 -100, Screen.width/3, Screen.height/4), this.discription, descriptStyle);
+			GUI.Box(new Rect(Screen.width/2 -150 ,Screen.height/2 -100, Screen.width/2, Screen.height/3), this.discription, descriptStyle);
             
 
 				//GUI.Label(new Rect(100,100,200,30),this.discription);
