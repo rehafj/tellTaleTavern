@@ -51,7 +51,7 @@ public class AchivmentsTest : MonoBehaviour {
 		//loadDictionary();
 
 		addEarnedAchiv(000);
-		StartCoroutine(displayLastAciv(achivmentsTest[000], 10));
+		StartCoroutine(displayLastAciv(achivmentsTest[000], 6));
 
 		//foreach(AchivSystem i in achivmentsTest){
 		//	Debug.Log("added item "+ i.titile);
@@ -106,7 +106,7 @@ public class AchivmentsTest : MonoBehaviour {
 		achSound.Play();
 		achivPanel.SetActive(true);
 		AchivText.enabled = true;
-		AchivText.text = a.titile + "Achievement unlocked!";
+		AchivText.text = a.titile + "Achievement unlocked! " + a.discription ;
 		Debug.Log("text feild should have "+ a.titile);
    	 	yield return new WaitForSeconds(time);
 		AchivText.enabled = false;
@@ -123,7 +123,7 @@ public class AchivmentsTest : MonoBehaviour {
 		achivmentsTest.Add(001, new AchivSystem("Game stared~" ,false, "you began the game",10));
 		achivmentsTest.Add(002, new AchivSystem("Damn those Dukes!~" ,false, "you're enemies with the Dukes",10));
 		achivmentsTest.Add(003, new AchivSystem("Here come the Dukes~" ,false, "you're friends with the Dukes",10));
-		achivmentsTest.Add(004, new AchivSystem("Have a drink!" ,false, "you began the game",10));
+		achivmentsTest.Add(004, new AchivSystem("Have a drink!" ,false, "Entered the Brewery",10));
 		achivmentsTest.Add(005, new AchivSystem("cishetmuch?~" ,false, "tell Wilma to marry the Prince",10));
 		achivmentsTest.Add(006, new AchivSystem("Game stared~" ,false, "you began the game",10));
 		achivmentsTest.Add(007, new AchivSystem("Friends in high places~" ,false, "become Royal Brewmaster",10));
@@ -132,7 +132,7 @@ public class AchivmentsTest : MonoBehaviour {
 		achivmentsTest.Add(010, new AchivSystem("Goin' to the chapel, aaaaand we're...~" ,false, "give the Aurora rose to the Dukes",10));
 		achivmentsTest.Add(011, new AchivSystem("Wedding Crasher~" ,false, "keep the Aurora rose for yourself",10));
 		achivmentsTest.Add(012, new AchivSystem("Excuse me while I kiss this guy~" ,false, "Dukes marry the Prince",10));
-		achivmentsTest.Add(333, new AchivSystem("Make it rain, but not really ouch coins hurt" ,false, "Spend 1000 gold in the market",10));
+		achivmentsTest.Add(333, new AchivSystem("Make it rain, but not really ouch coins hurt" ,false, "Acquire 3000 gold.",10));
         achivmentsTest.Add(013, new AchivSystem("Viking Punks, F*ck off~", false, "finish game with shitty bar", 10));
         achivmentsTest.Add(014, new AchivSystem("Sticky...~", false, "finish game with a middle-low bar", 10));
         achivmentsTest.Add(015, new AchivSystem("You're the averagest~", false, "finish game with a normal bar", 10));
@@ -168,9 +168,9 @@ public class AchivmentsTest : MonoBehaviour {
         achivmentsTest.Add(045, new AchivSystem("Gnome Revolution~", false, "The gnome strike is a sucess.", 10));
         achivmentsTest.Add(046, new AchivSystem("Evil Uncle Moneybags", false, "You called in the Uncle.", 10));
         achivmentsTest.Add(047, new AchivSystem("Call the Mayor~", false, "Look, this is the mayor's job. I don't want no trouble in my place.", 10));
-        achivmentsTest.Add(048, new AchivSystem("Multi-beving~", false, "Bought one of each drink", 10));
+        achivmentsTest.Add(048, new AchivSystem("Multi-beving~", false, "Welcome to Bevmo home of the Bev.", 10));
         achivmentsTest.Add(049, new AchivSystem("Let Them Eat All the Cakes~", false, "Bought one of each bread", 10));
-        achivmentsTest.Add(050, new AchivSystem("Meat, 'Murica ~", false, "Bought one of each meat", 10));
+        achivmentsTest.Add(050, new AchivSystem("Meat, 'Murica ~", false, "First trip to the butcher", 10));
         achivmentsTest.Add(051, new AchivSystem("F*ck Off~", false, "Made a character so angry they left", 10));
         achivmentsTest.Add(052, new AchivSystem("Finished a Game~", false, "you finished", 10));
         achivmentsTest.Add(053, new AchivSystem("Lone Wolf~", false, "You didn't get into this business to talk to people. You got into this business to take invetory, wipe down coutners and get people drunk.", 10));
@@ -182,7 +182,13 @@ public class AchivmentsTest : MonoBehaviour {
         achivmentsTest.Add(059, new AchivSystem("I knew you were trouble when you walked in.", false, "Talked to Sasha", 10));
         achivmentsTest.Add(060, new AchivSystem("Blame it on the alcohol", false, "Got a fairy drunk so you could get tips, you monster.", 10));
         achivmentsTest.Add(061, new AchivSystem("Captain of the Loveboat", false, "Get flirty with Sasha", 10));
-
+        achivmentsTest.Add(062, new AchivSystem("Social Butterfly", false, "Talked to everyone day 1", 10));
+        achivmentsTest.Add(063, new AchivSystem("One Friend", false, "Look at you! You talked to your first customer!", 10));
+        achivmentsTest.Add(064, new AchivSystem("Deflation", false, "You couldn't even pretend to be impressed?", 10));
+        achivmentsTest.Add(065, new AchivSystem("Hot and cold", false, "A little inconsistent.", 10));
+        achivmentsTest.Add(066, new AchivSystem("This Provincial Life", false, "We've got an adventure seeker on our hands.", 10));
+        achivmentsTest.Add(067, new AchivSystem("Eat the Rich!", false, "... even if they are your family.", 10));
+        achivmentsTest.Add(068, new AchivSystem("Don't want no Trouble in my Place", false, "First time in your bar", 10));
     }
 
 
